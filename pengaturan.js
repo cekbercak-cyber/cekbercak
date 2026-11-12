@@ -7,5 +7,5 @@
                Bila kosong, dipakai alamat halaman yang sedang dibuka. */
 const ATUR={
  SKRIP_URL:'https://script.google.com/macros/s/AKfycbyxB4cvHeXIT8LJNn0b_tbsOZMluRTrHvFhg-oGa3Zx3OigBA_Iy46GecHjsM8wgpJY/exec',
- SITUS_URL:''
+ SITUS_URL:'https://cekbercak-cyber.github.io/cekbercak/'
 };
