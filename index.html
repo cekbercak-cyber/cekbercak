@@ -1,0 +1,1919 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>CekBercak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800&display=swap">
+<style>/* Layout: satu gagasan per layar, kartu kuning-putih bulat, Dokter Ayu menemani tiap langkah. */
+:root{
+  color-scheme:light;
+  --putih:#FFFFFF;--dasar:#FFFCEB;--lemon:#FFF3B8;--kuning:#FFC928;--emas:#D99A00;--emas-tua:#7A5600;
+  --tinta:#3B2F14;--redup:#6B5D3A;--garis:#F0E2A8;
+  --merah:#B23A2E;--merah-l:#FFE7E2;--oranye:#A85D00;--oranye-l:#FFE9C9;--hijau:#1F7A4D;--hijau-l:#DFF5E6;
+  --f-judul:"Baloo 2","Nunito","Trebuchet MS",sans-serif;--f-isi:"Nunito","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--dasar);color:var(--tinta);font-family:var(--f-isi);font-size:17px;line-height:1.55;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 96px}
+h1,h2,h3{font-family:var(--f-judul);line-height:1.15;margin:0;text-wrap:balance;font-weight:700}
+h1{font-size:clamp(2.1rem,6vw,3.3rem)}h2{font-size:clamp(1.6rem,4.4vw,2.2rem)}h3{font-size:1.25rem}
+p{margin:0}a{color:var(--emas-tua);font-weight:700}
+:focus-visible{outline:3px solid var(--emas);outline-offset:2px;border-radius:6px}
+.bingkai{max-width:760px;margin-inline:auto}
+header.atas{max-width:980px;margin-inline:auto;display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:14px}
+.merek{font-family:var(--f-judul);font-size:1.5rem;font-weight:800;text-decoration:none;color:var(--tinta)}.merek b{color:var(--emas)}
+nav.menu{display:flex;gap:6px;flex-wrap:wrap}
+nav.menu a{padding:7px 14px;border-radius:999px;text-decoration:none;color:var(--tinta);font-weight:800;font-size:.95rem}
+nav.menu a[aria-current="page"]{background:var(--kuning)}
+main{min-height:60vh}
+.hal{display:grid;gap:22px;padding-block:14px 30px;animation:masuk .35s ease both}
+@keyframes masuk{from{transform:translateY(12px);opacity:.3}to{transform:none;opacity:1}}
+.tombol{font:800 1.05rem var(--f-isi);border:0;border-radius:14px;padding:13px 24px;cursor:pointer;text-decoration:none;display:inline-block;text-align:center;color:var(--tinta)}
+.t-utama{background:var(--kuning);box-shadow:0 4px 0 var(--emas)}
+.t-utama:active{transform:translateY(3px);box-shadow:0 1px 0 var(--emas)}
+.t-kedua{background:var(--putih);border:2px solid var(--garis)}
+.t-teks{background:none;color:var(--emas-tua);text-decoration:underline;padding:8px}
+.deret{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.antara{justify-content:space-between}
+.kartu{background:var(--putih);border:2px solid var(--garis);border-radius:20px;padding:20px}
+.lembut{color:var(--redup)}.kecil{font-size:.88rem}
+.beranda{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:24px;align-items:center;max-width:980px;margin-inline:auto}
+.beranda>div{min-width:0;display:grid;gap:16px}
+.gambar-utama svg{width:100%;height:auto;display:block}
+.janji{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.janji li{display:flex;gap:10px;align-items:flex-start}
+.janji i{flex:none;width:26px;height:26px;border-radius:50%;background:var(--lemon);display:grid;place-items:center;font-style:normal;font-weight:800;color:var(--emas-tua)}
+.dok-wrap{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:end}
+.dok-wrap .dokter{width:96px;height:auto;display:block;animation:ayun 3.4s ease-in-out infinite;transform-origin:bottom center}
+.dok-besar{grid-template-columns:150px minmax(0,1fr)}.dok-besar .dokter{width:150px}
+@keyframes ayun{50%{transform:translateY(-4px) rotate(1deg)}}
+.teman{display:grid;grid-template-columns:104px minmax(0,1fr);gap:14px;align-items:center;background:var(--kuning);border:3px solid var(--tinta);border-radius:20px;padding:10px 16px 0 10px;overflow:hidden}
+.teman>div{min-width:0}.teman h2{font-size:clamp(1.45rem,4vw,1.8rem);font-weight:800}.teman p{font-weight:700;padding-bottom:10px}
+.teman-wajah{height:112px;overflow:hidden}.teman-wajah .dokter{width:104px;height:auto;display:block}
+.gelembung{background:var(--lemon);border-radius:18px 18px 18px 4px;padding:12px 16px;font-weight:700;min-width:0}
+.proses{height:10px;background:var(--lemon);border-radius:999px;overflow:hidden}
+.proses div{height:100%;background:var(--kuning);transition:width .3s}
+.bidang{display:grid;gap:14px}
+.isian{display:grid;gap:4px;min-width:0}
+.isian label,.lab{font-weight:800;font-size:.95rem}
+.isian small{color:var(--redup)}
+input:not([type]),input[type=password],input[type=search],input[type=text],input[type=tel],input[type=date],input[type=number],textarea,select{font:inherit;width:100%;padding:11px 12px;border:2px solid var(--garis);border-radius:12px;background:var(--putih);color:var(--tinta);min-width:0}
+input:focus,textarea:focus,select:focus{outline:3px solid var(--kuning);outline-offset:0}
+.dua{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.pil{display:grid;gap:10px}
+.pil label{position:relative;display:block;cursor:pointer}
+.pil input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.pil span{display:block;padding:13px 16px;border:2px solid var(--garis);border-radius:14px;background:var(--putih);font-weight:800}
+.pil input:checked+span{background:var(--kuning);border-color:var(--emas)}
+.pil input:focus-visible+span{outline:3px solid var(--emas);outline-offset:2px}
+.setuju{display:flex;gap:10px;align-items:flex-start}
+.setuju input{width:22px;height:22px;flex:none;margin-top:3px;accent-color:var(--emas)}
+.galat{color:var(--merah);font-weight:800}
+details.bantu{background:var(--lemon);border-radius:14px;padding:10px 14px}
+details.bantu summary{cursor:pointer;font-weight:800}
+details.bantu ol{margin:8px 0;padding-left:20px}
+.status{display:inline-block;padding:5px 14px;border-radius:999px;font-weight:800}
+.tinggi{background:var(--merah-l);color:var(--merah)}.sedang{background:var(--oranye-l);color:var(--oranye)}.rendah{background:var(--hijau-l);color:var(--hijau)}.biasa{background:var(--lemon);color:var(--emas-tua)}
+.meter{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+.meter b{height:12px;border-radius:6px;background:var(--lemon);display:block}
+.meter b.on{background:var(--kuning)}.tinggi-m b.on{background:var(--merah)}.sedang-m b.on{background:#E08A00}.rendah-m b.on{background:var(--hijau)}
+.tab{display:flex;gap:6px;flex-wrap:wrap}
+.tab button{font:800 .95rem var(--f-isi);border:2px solid var(--garis);background:var(--putih);border-radius:999px;padding:8px 14px;cursor:pointer;color:var(--tinta)}
+.tab button[aria-selected="true"]{background:var(--kuning);border-color:var(--emas)}
+.alur{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:a}
+.alur li{counter-increment:a;display:grid;grid-template-columns:38px minmax(0,1fr);gap:12px;padding-bottom:16px;position:relative}
+.alur li::before{content:counter(a);width:38px;height:38px;border-radius:50%;background:var(--kuning);display:grid;place-items:center;font-weight:800}
+.alur li:not(:last-child)::after{content:"";position:absolute;left:18px;top:38px;bottom:0;width:2px;background:var(--garis)}
+.opsi{border:2px solid var(--garis);border-radius:14px;background:var(--putih);padding:12px 14px}
+.opsi[open]{border-color:var(--emas)}.opsi summary{cursor:pointer;font-weight:800}.opsi p{margin-top:6px}
+.tagar{display:inline-block;background:var(--lemon);color:var(--emas-tua);font-size:.76rem;font-weight:800;padding:1px 8px;border-radius:999px;margin-left:6px}
+.ringkas{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--dasar);border:2px dashed var(--garis);border-radius:12px;padding:12px;font:600 .92rem var(--f-isi);margin:0}
+.pintu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.pintu a{display:grid;gap:8px;justify-items:center;text-align:center;background:var(--putih);border:2px solid var(--garis);border-radius:22px;padding:24px 14px;text-decoration:none;color:var(--tinta);transition:transform .15s}
+.pintu a:hover{transform:translateY(-3px)}.pintu svg{width:90px;height:90px}
+video{width:100%;display:block;border-radius:18px;background:var(--tinta);aspect-ratio:16/9;max-width:100%}
+.daftar-bab{display:grid;gap:10px}
+.daftar-bab a{display:flex;align-items:center;gap:12px;background:var(--putih);border:2px solid var(--garis);border-radius:16px;padding:12px 14px;text-decoration:none;color:var(--tinta);font-weight:800}
+.daftar-bab a span{flex:none;width:34px;height:34px;border-radius:50%;background:var(--lemon);display:grid;place-items:center}
+.kart-klik{display:grid;gap:10px}
+.buka{width:100%;text-align:left;font:800 1.03rem var(--f-isi);background:var(--putih);color:var(--tinta);border:2px solid var(--garis);border-radius:16px;padding:13px 44px 13px 16px;cursor:pointer;position:relative}
+.buka::after{content:"+";position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:1.4rem;color:var(--emas);transition:transform .2s}
+.buka[aria-expanded="true"]{background:var(--lemon);border-color:var(--emas)}
+.buka[aria-expanded="true"]::after{transform:translateY(-50%) rotate(45deg)}
+.isi-buka{padding:6px 4px 10px;display:grid;gap:10px;animation:masuk .3s ease both}
+.ilus{max-width:260px;width:100%;height:auto;display:block;margin-inline:auto}
+.foto-t{font:800 .96rem var(--f-isi);width:100%;background:var(--oranye-l);color:var(--oranye);border:2px dashed #E0B060;border-radius:12px;padding:11px;cursor:pointer}
+figure{margin:0;display:grid;gap:6px;animation:masuk .3s ease both}
+figure img{width:100%;max-height:440px;object-fit:contain;background:var(--dasar);border-radius:12px;display:block}
+figcaption{font-size:.84rem;color:var(--redup)}
+.bab-nav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.balik{perspective:800px;background:none;border:0;padding:0;cursor:pointer;width:100%;font:inherit;color:inherit;text-align:center}
+.balik .sisi{display:grid;place-items:center;min-height:120px;padding:14px;border-radius:16px;border:2px solid var(--garis);background:var(--putih);font-weight:800}
+.balik[aria-pressed="true"] .sisi{background:var(--hijau-l);border-color:var(--hijau);font-weight:700;animation:kibas .35s ease}
+@keyframes kibas{from{transform:rotateY(80deg)}to{transform:none}}
+.mitos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.garis-waktu{height:16px;background:var(--lemon);border-radius:999px;position:relative;overflow:hidden}
+.garis-waktu div{position:absolute;inset:0 auto 0 0;background:var(--kuning)}
+.ceklis{display:grid;gap:8px}
+.bintang{display:flex;gap:4px}
+.bintang button{background:none;border:0;font-size:2.3rem;line-height:1;cursor:pointer;color:var(--garis);padding:2px}
+.bintang button.on{color:var(--kuning)}
+footer{max-width:760px;margin:24px auto 0;border-top:2px solid var(--garis);padding-top:14px;font-size:.88rem;color:var(--redup);display:grid;gap:6px}
+.bawah{display:none}
+@media (max-width:720px){
+  nav.menu{display:none}
+  .bawah{position:fixed;left:0;right:0;bottom:0;z-index:5;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--putih);border-top:2px solid var(--garis);padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
+  .bawah a{text-align:center;text-decoration:none;color:var(--tinta);font-weight:800;font-size:.78rem;padding:7px 2px;border-radius:10px}
+  .bawah a[aria-current="page"]{background:var(--kuning)}
+  .beranda{grid-template-columns:minmax(0,1fr)}.gambar-utama{order:-1;max-width:230px;margin-inline:auto}
+  .dua,.mitos{grid-template-columns:minmax(0,1fr)}
+  .dok-besar{grid-template-columns:110px minmax(0,1fr)}.dok-besar .dokter{width:110px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* --- tokoh kedua, QR, petugas --- */
+.nama-t{display:block;font:800 .78rem var(--f-isi);letter-spacing:.06em;text-transform:uppercase;color:var(--emas-tua);margin-bottom:2px}
+.teman{grid-template-columns:auto auto minmax(0,1fr)}.teman-wajah{width:92px}.teman-wajah .dokter{width:92px}
+.qr-ajak{display:flex;gap:12px;align-items:center;background:var(--putih);border:2px dashed var(--emas);border-radius:16px;padding:10px 14px;color:var(--tinta);text-decoration:none}
+.qr-ajak svg{width:38px;height:38px;flex:none}.qr-ajak span{display:grid}.qr-ajak small{color:var(--redup);font-weight:600}
+.qr-ajak:hover{background:var(--lemon)}
+.poster{max-width:460px;width:100%;border-radius:18px;overflow:hidden;box-shadow:0 6px 24px rgba(59,47,20,.15);border:2px solid var(--garis)}.poster svg{display:block;width:100%;height:auto}
+.simpan-info{border-radius:12px;padding:10px 14px;font-weight:700;margin:0}
+.s-ok{background:var(--hijau-l);color:var(--hijau)}.s-gagal{background:var(--merah-l);color:var(--merah)}.s-kirim,.s-mati{background:var(--lemon);color:var(--emas-tua)}
+.tautan{background:none;border:0;padding:0;font:800 1rem var(--f-isi);color:var(--emas-tua);text-decoration:underline;cursor:pointer}.tautan.merah{color:var(--merah)}
+.t-hapus{background:var(--merah);color:#fff;padding:7px 12px;font-size:.9rem}
+.sempit{max-width:420px}
+.hal.lebar{margin-inline:calc(50% - min(550px, 50vw - 24px))}
+.gulir{overflow-x:auto;border:2px solid var(--garis);border-radius:14px;background:var(--putih)}
+.tabel-ptg{border-collapse:collapse;width:100%;min-width:760px;font-size:.92rem}
+.tabel-ptg th,.tabel-ptg td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--garis);vertical-align:top}
+.tabel-ptg th{background:var(--lemon);font-weight:800}
+.tabel-ptg summary{cursor:pointer;font-weight:800}.tabel-ptg dl{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:6px 0 0;font-size:.85rem}.tabel-ptg dt{color:var(--redup)}.tabel-ptg dd{margin:0}
+.tabel-ptg .status{font-size:.8rem;padding:3px 10px}.yakin{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-weight:700}
+.ringkas-status{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}.ringkas-status div{border-radius:14px;padding:10px 12px;display:grid}.ringkas-status b{font:800 1.6rem var(--f-judul)}
+.ringkas-status span{font-size:.85rem;font-weight:700}
+.petugas-masuk{justify-self:start;background:none;border:2px solid var(--garis);border-radius:999px;padding:6px 14px;color:var(--redup);font-weight:800;text-decoration:none;font-size:.85rem}
+@media (max-width:720px){.teman{grid-template-columns:auto auto;padding:10px 12px 0}.teman>div:last-child{grid-column:1/-1}.teman-wajah,.teman-wajah .dokter{width:84px}.teman-wajah{height:100px}}
+@media print{@page{size:A4;margin:0}body>*:not(main){display:none!important}main>section>*:not(#poster){display:none!important}main,.hal{padding:0!important;margin:0!important;max-width:none!important}#poster{max-width:none;border:0;box-shadow:none;border-radius:0}}
+.kenalan{display:grid;gap:10px}.kenalan .dok-wrap{grid-template-columns:64px minmax(0,1fr)}.kenalan .dokter{width:64px}.kenalan .gelembung{font-size:.95rem}
+.kenalan-dua{display:grid;grid-template-columns:1fr 1fr;gap:10px}.kenalan-dua .dok-wrap{grid-template-columns:52px minmax(0,1fr);gap:8px}.kenalan-dua .dokter{width:52px}
+.kenalan .bersama{grid-template-columns:auto minmax(0,1fr)}.dua-wajah{display:flex}.dua-wajah .dokter{width:56px}.dua-wajah .dokter+.dokter{margin-left:-8px}
+.kenalan .bersama .gelembung{background:var(--kuning)}
+</style>
+</head>
+<body>
+<header class="atas"><a class="merek" href="#beranda">Cek<b>Bercak</b></a>
+<nav class="menu" aria-label="Menu utama"><a data-m-nav="beranda" href="#beranda">Beranda</a><a data-m-nav="pahami" href="#pahami">Pahami Kusta</a><a data-m-nav="penularan" href="#penularan">Penularan</a><a data-m-nav="saran" href="#saran">Saran</a></nav></header>
+<main id="utama" class="bingkai"></main>
+<footer><p>Butuh bantuan? Hubungi Halo Kemenkes 1500-567.</p><p>CekBercak adalah versi uji coba dan tidak menggantikan pemeriksaan tenaga kesehatan. <a href="#sumber">Sumber</a></p><a class="petugas-masuk" href="#petugas">Masuk petugas</a></footer>
+<nav class="bawah" aria-label="Menu ponsel"><a data-m-nav="beranda" href="#beranda">Beranda</a><a data-m-nav="pahami" href="#pahami">Pahami</a><a data-m-nav="penularan" href="#penularan">Penularan</a><a data-m-nav="saran" href="#saran">Saran</a></nav>
+<script src="pengaturan.js"></script>
+<script>/* Maskot CekBercak: Dokter Teguh dan Sigma, ilustrasi orisinal */
+const _T={kulit:'#C98F62',kulitS:'#D9A27A',tinta:'#3B2F14',putih:'#FFFFFF',rambut:'#33241A',dasi:'#1D1D22',kemeja:'#E4EEF8',hijab:'#F3D27A',hijabG:'#D9AE45'};
+function _lengan(pose,warna){const t=_T.tinta,k=pose==='x'?'':'';const L=(d)=>`<path d="${d}" fill="none" stroke="${t}" stroke-width="27" stroke-linecap="round"/><path d="${d}" fill="none" stroke="${warna}" stroke-width="22" stroke-linecap="round"/>`;
+ const T=(cx,cy,r=14,kl=_T.kulit)=>`<circle cx="${cx}" cy="${cy}" r="${r}" fill="${kl}" stroke="${t}" stroke-width="2.5"/>`;
+ return {kulit:(kl)=>({
+  sapa:L('M58 176q-18 14 -16 44')+L('M142 172q26 -14 32 -52')+T(175,110,14,kl),
+  semangat:L('M58 172q-26 -12 -30 -50')+T(27,112,14,kl)+L('M142 172q26 -12 30 -50')+T(173,112,14,kl),
+  pikir:L('M58 176q-18 14 -16 44')+L('M142 176q24 2 6 -44')+T(141,118,13,kl),
+  jempol:L('M58 176q-18 14 -16 44')+L('M142 176q28 -2 34 -36')+T(177,128,14,kl)+`<rect x="172" y="98" width="11" height="26" rx="5.5" fill="${kl}" stroke="${t}" stroke-width="2.5"/>`
+ }[pose]||'')}}
+function _mulut(pose,bicara,y){return bicara?`<ellipse cx="100" cy="${y+3}" rx="9" ry="8" fill="#8E3B2E"/>`:pose==='pikir'?`<path d="M92 ${y+4}q8 3 16 -1" fill="none" stroke="#7A3B2A" stroke-width="3.5" stroke-linecap="round"/>`:`<path d="M86 ${y-3}q14 17 28 0z" fill="#8E3B2E"/><path d="M89 ${y-2}q11 4 22 0" fill="none" stroke="#fff" stroke-width="3"/>`}
+function dokter(pose='sapa',bicara=false){
+ const {kulit,tinta,putih,rambut,dasi,kemeja}=_T;
+ return `<svg viewBox="0 0 200 244" role="img" aria-label="Ilustrasi Dokter Teguh" class="dokter">
+ <path d="M50 244v-62q0 -38 50 -38t50 38v62z" fill="${putih}" stroke="${tinta}" stroke-width="3"/>
+ <path d="M80 148l20 30 20 -30v96h-40z" fill="${kemeja}"/>
+ <path d="M84 146l16 18 16 -18" fill="${putih}" stroke="${tinta}" stroke-width="2.5" stroke-linejoin="round"/>
+ <path d="M95 163h10l3 6 -3 4h-10l-3 -4z" fill="${dasi}"/><path d="M96 172h8l6 46 -10 12 -10 -12z" fill="${dasi}"/>
+ <path d="M80 150l-6 30 14 6 -8 50M120 150l6 30 -14 6 8 50" fill="none" stroke="${tinta}" stroke-width="2.5" stroke-linejoin="round"/>
+ <rect x="124" y="204" width="18" height="16" rx="3" fill="none" stroke="${tinta}" stroke-width="2"/><path d="M130 198v10" stroke="#2F6FB0" stroke-width="3" stroke-linecap="round"/>
+ <rect x="88" y="118" width="24" height="30" rx="11" fill="${kulit}"/>
+ <circle cx="100" cy="82" r="44" fill="${kulit}" stroke="${tinta}" stroke-width="2.5"/>
+ <circle cx="55" cy="88" r="8" fill="${kulit}" stroke="${tinta}" stroke-width="2.5"/><circle cx="145" cy="88" r="8" fill="${kulit}" stroke="${tinta}" stroke-width="2.5"/><path d="M54 80q-6 -56 46 -56q54 0 46 56q-6 -18 -14 -24q-34 10 -66 -2q-8 8 -12 26z" fill="${rambut}"/><path d="M72 72q10 -6 20 -1M108 71q10 -5 20 1" fill="none" stroke="${rambut}" stroke-width="5" stroke-linecap="round"/> <ellipse cx="82" cy="86" rx="5.5" ry="7" fill="${tinta}"/><ellipse cx="118" cy="86" rx="5.5" ry="7" fill="${tinta}"/>
+ <circle cx="84" cy="83" r="2" fill="#fff"/><circle cx="120" cy="83" r="2" fill="#fff"/>
+ <ellipse cx="70" cy="100" rx="8" ry="5" fill="#E8826B" opacity=".3"/><ellipse cx="130" cy="100" rx="8" ry="5" fill="#E8826B" opacity=".3"/>
+ ${_mulut(pose,bicara,100)}${_lengan(pose,putih).kulit(kulit)}</svg>`;
+}
+function sigma(pose='sapa',bicara=false){
+ const {kulitS:kulit,tinta,putih,hijab,hijabG}=_T;
+ return `<svg viewBox="0 0 200 244" role="img" aria-label="Ilustrasi Sigma" class="dokter">
+ <path d="M48 244v-60q0 -40 52 -40t52 40v60z" fill="${putih}" stroke="${tinta}" stroke-width="3"/>
+ <path d="M100 160v84" stroke="${tinta}" stroke-width="2" stroke-dasharray="1 9" stroke-linecap="round"/>
+ <path d="M100 22q-56 0 -58 62q-2 40 12 60q-14 10 -16 26q30 22 62 22t62 -22q-2 -16 -16 -26q14 -20 12 -60q-2 -62 -58 -62z" fill="${hijab}" stroke="${tinta}" stroke-width="3"/>
+ <ellipse cx="100" cy="92" rx="35" ry="41" fill="${kulit}" stroke="${tinta}" stroke-width="2.5"/>
+ <path d="M65 84q2 -38 35 -40q33 2 35 40" fill="none" stroke="${hijabG}" stroke-width="4" stroke-linecap="round"/>
+ <path d="M66 126q34 28 68 0" fill="none" stroke="${hijabG}" stroke-width="3" stroke-linecap="round"/>
+ <circle cx="132" cy="140" r="5" fill="${putih}" stroke="${tinta}" stroke-width="2"/>
+ <path d="M76 78q8 -5 16 -1M108 77q8 -4 16 1" fill="none" stroke="#4A3220" stroke-width="3.5" stroke-linecap="round"/>
+ <ellipse cx="85" cy="91" rx="5.5" ry="7" fill="${tinta}"/><ellipse cx="115" cy="91" rx="5.5" ry="7" fill="${tinta}"/>
+ <circle cx="87" cy="88" r="2" fill="#fff"/><circle cx="117" cy="88" r="2" fill="#fff"/>
+ <path d="M80 85l-5 -3M120 85l5 -3" stroke="${tinta}" stroke-width="2" stroke-linecap="round"/>
+ <ellipse cx="74" cy="105" rx="7.5" ry="4.5" fill="#E8826B" opacity=".45"/><ellipse cx="126" cy="105" rx="7.5" ry="4.5" fill="#E8826B" opacity=".45"/>
+ ${_mulut(pose,bicara,108)}${_lengan(pose,putih).kulit(kulit)}</svg>`;
+}
+function tokoh(nama,pose,bicara){return nama==='sigma'?sigma(pose,bicara):dokter(pose,bicara)}
+if(typeof module!=='undefined')module.exports={dokter,sigma,tokoh};
+
+/* Aturan status skrining. Berdasarkan Juknis CKG 2026, Permenkes 11/2019, dan PNPK Kusta 2019. */
+function adaKontak(a){return ['serumah','tetangga','sosial'].includes(a.r_kontak);}
+function hitungUsia(tgl,kini){
+  if(!tgl)return null;const b=new Date(tgl+'T00:00:00'),n=kini||new Date();if(isNaN(b)||b>n)return null;
+  let u=n.getFullYear()-b.getFullYear();if(n.getMonth()<b.getMonth()||(n.getMonth()===b.getMonth()&&n.getDate()<b.getDate()))u--;return u;
+}
+function nilaiSkrining(a){
+  const suspek=[],periksa=[],catatan=[];
+  const bercak=a.k_bercak==='ya',kontak=adaKontak(a);
+  if(bercak&&a.k_mati==='ya')suspek.push('Bercak dengan rasa raba berkurang atau mati rasa');
+  if(a.s_luka==='ya')suspek.push('Luka atau lepuh di tangan atau kaki yang tidak nyeri, atau sulit sembuh');
+  if(a.s_lemah==='ya')suspek.push('Kelemahan atau perubahan bentuk pada tangan, kaki, atau kelopak mata');
+  if(a.k_bercak==='ragu')periksa.push('Belum yakin ada bercak di kulit');
+  if(bercak&&a.k_mati==='ragu')periksa.push('Rasa raba pada bercak belum pasti');
+  if(bercak&&a.k_gatal==='ya'&&a.k_kering==='ya')periksa.push('Bercak tidak gatal dan tampak mengilap, kering, atau tidak berkeringat');
+  if(bercak&&a.k_lama==='ya')periksa.push('Bercak tidak sembuh dengan pengobatan biasa');
+  if(bercak&&a.k_mati==='tidak'&&(kontak||a.r_wilayah==='ya'))periksa.push('Ada bercak disertai riwayat kontak atau wilayah dengan kasus kusta');
+  if(a.k_wajah==='ya'||a.k_wajah==='ragu')periksa.push('Bengkak atau penebalan di wajah atau telinga, atau alis rontok');
+  if(a.s_kebas==='ya')periksa.push('Mati rasa, kesemutan, atau rasa tertusuk di tangan atau kaki');
+  if(a.s_nyeri==='ya')periksa.push('Nyeri pada saraf');
+  if(['s_luka','s_lemah','s_kebas','s_nyeri'].some(k=>a[k]==='ragu'))periksa.push('Ada jawaban tidak yakin tentang tangan, kaki, atau saraf');
+  if(a.r_pernah==='ya')catatan.push('Beri tahu petugas bahwa Anda pernah berobat kusta. Bercak atau mati rasa lama bisa menetap, tetapi tanda baru perlu diperiksa.');
+  if(a.usia!==null&&a.usia!==undefined&&a.usia<18)catatan.push('Anak bisa sulit menjelaskan rasa raba. Bila ragu, bawa anak ke puskesmas.');
+  if(a.peran==='lain')catatan.push('Bicarakan hasil ini hanya dengan orang yang bersangkutan.');
+  let hasil='aman';
+  if(suspek.length)hasil='suspek';else if(periksa.length)hasil='periksa';else if(bercak)hasil='kulit';else if(kontak)hasil='kontak';
+  return {hasil,alasan:[...suspek,...periksa],catatan};
+}
+if(typeof module!=='undefined')module.exports={nilaiSkrining,hitungUsia};
+
+/* Isi publik CekBercak. */
+const YTR=[['ya','Ya'],['tidak','Tidak'],['ragu','Tidak yakin']];
+const adaBercak=a=>a.k_bercak==='ya';
+const TANYA=[
+ {id:'k_bercak',bag:'Kulit',t:'Ada bercak putih pucat atau kemerahan di kulit?',ucap:'Lihat seluruh tubuh dengan cahaya terang, termasuk punggung. Minta bantuan orang yang dipercaya bila perlu.',pose:'sapa',o:YTR,src:'Juknis CKG 2026'},
+ {id:'k_mati',bag:'Kulit',t:'Apakah rasa raba pada bercak itu berkurang atau hilang?',ucap:'Ini pertanyaan terpenting. Pelan-pelan saja, ya.',pose:'pikir',o:YTR,s:adaBercak,cara:true,src:'Juknis CKG 2026'},
+ {id:'k_gatal',bag:'Kulit',t:'Apakah bercak itu tidak gatal?',ucap:'Jawab “Ya” bila bercaknya tidak gatal.',pose:'pikir',o:YTR,s:adaBercak,src:'Permenkes 11/2019'},
+ {id:'k_kering',bag:'Kulit',t:'Apakah bercak tampak mengilap, kering bersisik, atau tidak berkeringat?',ucap:'Bandingkan dengan kulit di sekitarnya.',pose:'pikir',o:YTR,s:adaBercak,src:'Permenkes 11/2019'},
+ {id:'k_lama',bag:'Kulit',t:'Apakah bercak tidak sembuh dengan pengobatan biasa?',ucap:'Misalnya sudah memakai salep kulit, tetapi bercak tetap ada.',pose:'sapa',o:YTR,s:adaBercak,src:'PNPK Kusta 2019'},
+ {id:'k_wajah',bag:'Kulit',t:'Ada bengkak atau penebalan di wajah atau cuping telinga, atau alis rontok?',ucap:'Anda sudah melakukan yang terbaik dengan mengecek ini.',pose:'jempol',o:YTR,src:'Permenkes 11/2019'},
+ {id:'s_luka',bag:'Tangan dan kaki',t:'Ada luka atau lepuh di tangan atau kaki yang tidak nyeri, atau luka yang sulit sembuh?',ucap:'Kusta bisa mengenai saraf walaupun tidak ada bercak.',pose:'pikir',o:YTR,src:'Juknis CKG 2026'},
+ {id:'s_lemah',bag:'Tangan dan kaki',t:'Ada tangan, kaki, atau kelopak mata yang melemah, jari bengkok, atau kaki sulit diangkat?',ucap:'Tenang, kita hanya mencatat apa yang Anda rasakan.',pose:'sapa',o:YTR,src:'Juknis CKG 2026'},
+ {id:'s_kebas',bag:'Tangan dan kaki',t:'Tangan atau kaki terasa kebas, kesemutan, atau seperti tertusuk?',ucap:'Keluhan ini juga bisa disebabkan penyakit lain.',pose:'pikir',o:YTR,src:'Permenkes 11/2019'},
+ {id:'s_nyeri',bag:'Tangan dan kaki',t:'Ada nyeri pada saraf, misalnya muncul sendiri atau saat ditekan?',ucap:'Sedikit lagi selesai.',pose:'jempol',o:YTR,src:'Permenkes 11/2019'},
+ {id:'r_kontak',bag:'Riwayat',t:'Adakah orang dengan kusta di sekitar Anda dalam 5 tahun terakhir?',ucap:'Kontak sekolah atau kerja berarti bergaul minimal 20 jam per minggu.',pose:'sapa',o:[['serumah','Serumah'],['tetangga','Tetangga dekat'],['sosial','Sekolah atau tempat kerja'],['tidak','Tidak ada'],['ragu','Tidak tahu']],src:'Permenkes 11/2019'},
+ {id:'r_wilayah',bag:'Riwayat',t:'Apakah di wilayah tempat tinggal Anda pernah ada kasus kusta?',ucap:'Tidak apa-apa bila tidak tahu.',pose:'pikir',o:YTR,src:'Permenkes 11/2019'},
+ {id:'r_pernah',bag:'Riwayat',t:'Pernah didiagnosis atau berobat kusta?',ucap:'Ini pertanyaan terakhir. Terima kasih sudah peduli pada kesehatan Anda.',pose:'semangat',o:[['ya','Ya'],['tidak','Tidak']],src:'Permenkes 11/2019'}
+];
+const HASIL={
+ suspek:{kls:'tinggi',m:4,s:'Perlu segera diperiksa',j:'Datanglah ke puskesmas secepatnya',p:'Jawaban Anda memuat tanda yang dicari saat skrining kusta. Ini belum berarti Anda terkena kusta. Hanya petugas kesehatan yang bisa memastikannya.',kap:'Secepatnya. Jangan menunggu keluhan bertambah.',ucap:'Anda sudah berani mengecek. Kusta bisa sembuh, dan saya temani langkah berikutnya.',o:['puskesmas','dampingi','tanya']},
+ periksa:{kls:'sedang',m:3,s:'Perlu diperiksa',j:'Periksakan diri ke puskesmas',p:'Ada tanda yang belum bisa dinilai dari jawaban saja. Penyakit lain juga bisa menimbulkan keluhan ini, jadi perlu pemeriksaan langsung.',kap:'Dalam waktu dekat, saat Anda bisa ke puskesmas.',ucap:'Memeriksakan diri adalah langkah yang tepat. Lebih cepat, lebih tenang.',o:['puskesmas','ckg','dampingi','tanya']},
+ kulit:{kls:'biasa',m:2,s:'Bercak masih terasa',j:'Belum mengarah ke kusta, tetapi pantau bercaknya',p:'Bercak yang masih terasa sering disebabkan penyakit kulit lain, seperti panu atau kurap. Skrining mandiri tetap bisa keliru.',kap:'Bila bercak melebar, tidak membaik, atau rasa rabanya berkurang.',ucap:'Bagus, Anda memperhatikan kulit sendiri. Terus pantau, ya.',o:['puskesmas','ckg','tanya']},
+ kontak:{kls:'biasa',m:2,s:'Ada riwayat kontak',j:'Tidak ada tanda, tetapi kontak perlu diperiksa',p:'Kontak orang dengan kusta dianjurkan diperiksa setahun sekali selama 5 tahun, karena gejala bisa muncul bertahun-tahun kemudian.',kap:'Jadwalkan pemeriksaan kontak di puskesmas.',ucap:'Mengecek lebih awal melindungi Anda dan keluarga.',o:['kontak','ckg','tanya']},
+ aman:{kls:'rendah',m:1,s:'Tidak ada tanda',j:'Jawaban Anda tidak menunjukkan tanda kusta',p:'Hasil ini tidak sepenuhnya menyingkirkan kusta. Tanda awal mudah terlewat, dan gejala bisa muncul bertahun-tahun kemudian.',kap:'Bila muncul bercak, mati rasa, atau luka tanpa nyeri.',ucap:'Terima kasih sudah peduli. Sehat selalu, ya.',o:['ulang','ckg','tanya']}
+};
+const OPSI={
+ puskesmas:['Datang ke puskesmas','Katakan bahwa Anda ingin kulit Anda diperiksa. Anda tidak harus menyebut kusta. Petugas akan memeriksa bercak dan saraf, dan bila perlu mengambil sedikit kerokan kulit.'],
+ ckg:['Ikut Cek Kesehatan Gratis','Daftar melalui SATUSEHAT Mobile atau WhatsApp chatbot Kemenkes. CKG 2026 mencakup skrining kusta.'],
+ dampingi:['Minta didampingi','Ajak orang yang Anda percaya, atau minta bantuan kader kesehatan di wilayah Anda.'],
+ tanya:['Tanya dulu','Hubungi Halo Kemenkes di 1500-567.'],
+ kontak:['Minta pemeriksaan kontak','Tanyakan pemeriksaan kontak ke puskesmas, termasuk apakah Anda perlu obat pencegahan. Obat ini hanya diberikan petugas.'],
+ ulang:['Ulangi bila ada perubahan','Periksa kulit dengan cahaya terang sesekali, lalu ulangi cek ini bila ada perubahan.']
+};
+const OBAT=[
+ ['Rifampisin','Membunuh kuman kusta.','Air kencing bisa berwarna merah. Bisa juga mual atau nyeri perut.'],
+ ['Dapson','Menghambat pertumbuhan kuman.','Jarang, tetapi bisa ada ruam atau demam. Bila muncul, hentikan dan segera hubungi petugas.'],
+ ['Klofazimin','Khusus tipe MB, juga melawan kuman.','Kulit bisa menjadi lebih gelap dan kering. Bicarakan dengan petugas bila mengganggu.']
+];
+const f=(nama,w=720)=>'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(nama.replace(/ /g,'_'))+'?width='+w;
+const hal=n=>'https://commons.wikimedia.org/wiki/File:'+encodeURIComponent(n.replace(/ /g,'_'));
+const FOTO={
+ pucat:{n:'Paucibacillary leprosy (PB).jpg',k:'Bercak pucat di siku dengan rasa raba berkurang.',c:'Foto: mayrabcm, CC BY-SA 4.0'},
+ merah:{n:'Leprosy thigh demarcated cutaneous lesions.jpg',k:'Bercak kemerahan berbatas jelas di paha.',c:'Foto: US Department of Health and Human Services, domain publik'},
+ wajah:{n:'Leprosy face.jpg',k:'Penebalan dan benjolan di wajah pada kusta lanjut. Foto lama dari buku kedokteran.',c:'Foto: Richard C. Cabot, domain publik'},
+ cakar:{n:'Ulnar claw hand.JPG',k:'Contoh jari bengkok. Foto ini diperagakan oleh orang sehat.',c:'Foto: Mcstrother, CC BY 3.0'},
+ tangan:{n:'Leprosy deformities hands.jpg',k:'Perubahan bentuk jari karena kusta yang terlambat ditangani.',c:'Foto: B.jehle, CC BY-SA 3.0'},
+ jari:{n:'Leprosy hand affected fourth digit.jpg',k:'Luka pada jari tangan orang dengan kusta.',c:'Sumber: Wikimedia Commons, domain publik'},
+ kaki:{n:'Leprosy feet.jpg',k:'Kulit kaki dan pergelangan yang menebal pada orang dengan kusta.',c:'Foto: Mattgetsbetter, CC0'},
+ luka:{n:'Leprafuß (präop.).JPG',k:'Luka berat di kaki karena mati rasa. Foto ini cukup berat untuk dilihat.',c:'Foto: Rüdiger Döhler, CC BY 3.0'}
+};
+const ILUS={
+ pucat:`<svg class="ilus" viewBox="0 0 260 130" aria-hidden="true"><rect y="16" width="260" height="98" rx="40" fill="#C98F62"/><path d="M78 66c4-24 44-36 84-28 34 8 46 18 42 38-4 18-40 26-76 24-34-2-54-14-50-34z" fill="#EBD0BA"/></svg>`,
+ merah:`<svg class="ilus" viewBox="0 0 260 130" aria-hidden="true"><rect y="16" width="260" height="98" rx="40" fill="#C98F62"/><circle cx="96" cy="64" r="28" fill="#D9705E" opacity=".7"/><circle cx="172" cy="74" r="20" fill="#D9705E" opacity=".7"/></svg>`,
+ wajah:`<svg class="ilus" viewBox="0 0 260 130" aria-hidden="true"><circle cx="130" cy="66" r="52" fill="#C98F62"/><circle cx="108" cy="58" r="5" fill="#3B2F14"/><circle cx="152" cy="58" r="5" fill="#3B2F14"/><path d="M112 88q18 12 36 0" fill="none" stroke="#3B2F14" stroke-width="3" stroke-linecap="round"/><g fill="#A96E45"><circle cx="92" cy="80" r="8"/><circle cx="168" cy="84" r="7"/><circle cx="130" cy="34" r="7"/></g></svg>`,
+ saraf:`<svg class="ilus" viewBox="0 0 260 130" aria-hidden="true"><g fill="#C98F62"><rect x="-6" y="44" width="120" height="48" rx="10"/><rect x="100" y="24" width="84" height="88" rx="24"/><rect x="170" y="24" width="70" height="17" rx="8"/><rect x="170" y="46" width="84" height="17" rx="8"/><rect x="170" y="68" width="78" height="17" rx="8"/><rect x="170" y="92" width="60" height="16" rx="8"/></g><path d="M0 68q90 -16 170 -10t80 -3" fill="none" stroke="#FFC928" stroke-width="5" stroke-linecap="round"/></svg>`,
+ cakar:`<svg class="ilus" viewBox="0 0 260 130" aria-hidden="true"><g fill="#C98F62"><rect x="-6" y="56" width="110" height="44" rx="10"/><rect x="92" y="38" width="80" height="74" rx="22"/></g><g fill="none" stroke="#C98F62" stroke-width="15" stroke-linecap="round"><path d="M168 48h30q14 2 12 20"/><path d="M168 72h34q12 2 10 18"/><path d="M168 94h24q10 2 8 14"/></g></svg>`,
+ kaki:`<svg class="ilus" viewBox="0 0 260 130" aria-hidden="true"><path d="M50 16h56v60q0 12 18 16l78 8q18 4 14 18H50z" fill="#C98F62"/><circle cx="150" cy="104" r="11" fill="#D9705E"/></svg>`,
+ mata:`<svg class="ilus" viewBox="0 0 260 130" aria-hidden="true"><path d="M30 66q100 -76 200 0q-100 76 -200 0z" fill="#fff" stroke="#3B2F14" stroke-width="3"/><circle cx="130" cy="66" r="24" fill="#6B4A2C"/><circle cx="130" cy="66" r="11" fill="#2B2011"/><path d="M38 60q92 -62 184 0" fill="none" stroke="#C98F62" stroke-width="10" stroke-linecap="round"/></svg>`,
+ kuman:`<svg class="ilus" viewBox="0 0 260 130" aria-hidden="true"><g fill="#FFC928" stroke="#3B2F14" stroke-width="3"><rect x="34" y="28" width="94" height="26" rx="13" transform="rotate(14 80 41)"/><rect x="132" y="64" width="94" height="26" rx="13" transform="rotate(-18 180 77)"/><rect x="46" y="86" width="82" height="24" rx="12"/></g></svg>`,
+ obat:`<svg class="ilus" viewBox="0 0 260 130" aria-hidden="true"><rect x="48" y="16" width="164" height="98" rx="14" fill="#fff" stroke="#3B2F14" stroke-width="3"/><g fill="#FFC928" stroke="#3B2F14" stroke-width="2"><circle cx="86" cy="46" r="13"/><circle cx="130" cy="46" r="13"/><circle cx="174" cy="46" r="13"/><circle cx="86" cy="84" r="13"/><circle cx="130" cy="84" r="13"/><circle cx="174" cy="84" r="13"/></g></svg>`
+};
+const BAB=[
+ {id:'apa',j:'Apa itu kusta?',ucap:'Kusta adalah penyakit infeksi biasa yang bisa sembuh.',pose:'sapa',kart:[
+  {t:'Penyebabnya bakteri',p:'Kusta disebabkan bakteri Mycobacterium leprae. Bakteri ini tumbuh sangat lambat.',il:'kuman'},
+  {t:'Yang terkena: kulit dan saraf',p:'Kuman mengenai kulit dan saraf tepi, yaitu saraf di wajah, tangan, dan kaki. Mata dan selaput hidung juga bisa terkena.',il:'saraf'},
+  {t:'Bukan kutukan, bukan keturunan',p:'Kusta bukan akibat dosa, guna-guna, atau darah keluarga. Siapa pun bisa terkena, dan semua orang berhak diobati.'},
+  {t:'Bisa sembuh total',p:'Dengan obat yang diminum sampai tuntas, kuman mati. Semakin dini diobati, semakin kecil risiko kerusakan saraf.',il:'obat'}]},
+ {id:'kulit',j:'Tanda di kulit',ucap:'Tanda yang paling sering adalah bercak mati rasa.',pose:'pikir',kart:[
+  {t:'Bercak putih pucat',p:'Warnanya lebih pucat dari kulit sekitar, mirip panu. Bedanya, rasa rabanya berkurang atau hilang.',il:'pucat',foto:'pucat'},
+  {t:'Bercak kemerahan',p:'Bercak merah atau kecokelatan yang tidak gatal dan tidak nyeri. Pinggirnya bisa terlihat jelas.',il:'merah',foto:'merah'},
+  {t:'Penebalan atau benjolan',p:'Kulit wajah atau cuping telinga bisa menebal, muncul benjolan, dan alis rontok. Tanda ini perlu segera diperiksa.',il:'wajah',foto:'wajah'}]},
+ {id:'saraf',j:'Tanda di saraf',ucap:'Kusta kadang muncul di saraf tanpa bercak sama sekali.',pose:'pikir',kart:[
+  {t:'Kebas dan kesemutan',p:'Tangan atau kaki terasa kebas, kesemutan, atau seperti tertusuk. Saraf juga bisa terasa nyeri.',il:'saraf'},
+  {t:'Jari mulai bengkok',p:'Saraf yang rusak membuat otot melemah, sehingga jari sulit diluruskan.',il:'cakar',foto:'cakar'},
+  {t:'Kaki sulit diangkat',p:'Ujung kaki terasa jatuh saat berjalan. Orang bisa mudah tersandung.',il:'kaki',foto:'kaki'},
+  {t:'Kelopak mata sulit menutup',p:'Mata menjadi kering dan mudah luka. Segera periksakan bila ini baru terjadi.',il:'mata'}]},
+ {id:'mirip',j:'Mirip, tetapi belum tentu kusta',ucap:'Tidak semua bercak adalah kusta.',pose:'sapa',kart:[
+  {t:'Panu',p:'Bercak bersisik halus dan biasanya sedikit gatal saat berkeringat. Rasa rabanya tetap ada.'},
+  {t:'Kurap',p:'Bercak melingkar yang gatal, dengan pinggir merah. Rasa rabanya tetap ada.'},
+  {t:'Eksim',p:'Kulit kemerahan, kering, dan gatal. Rasa rabanya tetap ada.'},
+  {t:'Kuncinya: cek rasa raba',p:'Bercak mati rasa perlu diperiksa petugas, apa pun bentuknya.'}]},
+ {id:'komplikasi',j:'Bila tidak diobati',ucap:'Bagian ini bukan untuk menakuti. Hampir semua ini bisa dicegah dengan berobat dini.',pose:'pikir',kart:[
+  {t:'Luka yang tidak terasa',p:'Tangan dan kaki yang mati rasa tidak merasakan panas atau benda tajam. Luka kecil bisa membesar tanpa disadari.',il:'kaki',foto:'luka'},
+  {t:'Jari memendek dan berubah bentuk',p:'Luka berulang dan infeksi dapat merusak jari. Kerusakan ini sering menetap.',il:'cakar',foto:'tangan'},
+  {t:'Gangguan mata sampai buta',p:'Mata yang tidak bisa menutup mudah luka. Kerusakan mata dapat berujung kebutaan.',il:'mata'},
+  {t:'Reaksi kusta',p:'Reaksi adalah peradangan mendadak, bisa terjadi sebelum, selama, atau sesudah pengobatan. Bercak memerah atau bengkak, muncul benjolan nyeri, atau saraf terasa sakit. Segera ke puskesmas.'}]},
+ {id:'obat',j:'Pengobatan dan perawatan',ucap:'Obatnya gratis. Tugas kita minum sampai tuntas.',pose:'jempol',obat:true,kart:[
+  {t:'Berapa lama?',p:'Tipe PB biasanya 6–9 bulan. Tipe MB biasanya 12–18 bulan. Petugas menentukan tipe Anda.',il:'obat'},
+  {t:'Rawat tangan, kaki, dan mata',p:'Periksa tiap hari. Rendam kulit kering, gosok kulit tebal pelan-pelan, lalu oleskan minyak. Pakai alas kaki, dan lindungi mata dari debu.'},
+  {t:'Tetap bisa beraktivitas',p:'Anda tetap bisa sekolah, bekerja, dan tinggal bersama keluarga. Setelah minum obat, Anda tidak menjadi sumber penularan.'}]}
+];
+const MITOS=[
+ ['Kusta adalah kutukan.','Keliru. Penyebabnya bakteri.'],
+ ['Bersalaman bisa menularkan kusta.','Keliru. Kontak biasa tidak menularkan kusta.'],
+ ['Orang yang sedang minum obat harus dijauhi.','Keliru. Setelah berobat, ia tidak menjadi sumber penularan.'],
+ ['Jari bisa putus sendiri karena kusta.','Keliru. Kerusakan terjadi karena luka dan infeksi pada bagian yang mati rasa.']
+];
+const NARASI='Halo, saya Dokter Teguh. Kusta adalah infeksi bakteri pada kulit dan saraf tepi. Kusta bukan kutukan, dan bukan keturunan. Tanda yang paling sering adalah bercak putih atau kemerahan yang mati rasa dan biasanya tidak gatal. Kusta juga bisa mengenai saraf, sehingga tangan atau kaki terasa kebas, kesemutan, atau lemah. Kusta tidak mudah menular. Penularan butuh kontak dekat dan lama dengan orang yang belum berobat. Bersalaman atau makan bersama tidak menularkan kusta. Gejalanya bisa muncul bertahun-tahun setelah tertular, jadi sumbernya sering tidak diketahui. Kalau terlambat diobati, saraf bisa rusak. Kabar baiknya, kusta bisa sembuh, dan obatnya gratis di puskesmas. Ada bercak yang mati rasa? Jangan menunggu.';
+const SUMBER=[
+ ['Kepmenkes HK.01.07/MENKES/84/2026, Petunjuk Teknis CKG','https://kesprimkom.kemkes.go.id/assets/uploads/contents/others/2026kepmenkes084.pdf'],
+ ['Permenkes 11/2019 tentang Penanggulangan Kusta','https://www.peraturan.go.id/files/BN+449-2019.pdf'],
+ ['PNPK Tata Laksana Kusta, Kepmenkes HK.01.07/MENKES/308/2019','https://keslan.kemkes.go.id/unduhan/fileunduhan_1610415708_653954.pdf'],
+ ['Kemenkes: Kenali Ciri Kusta','https://www.kemkes.go.id/id/waspada-kusta-kenali-cirinya'],
+ ['WHO: Leprosy fact sheet','https://who.int/news-room/fact-sheets/detail/leprosy'],
+ ['Deviana R. Terapi Alternatif Morbus Hansen, CDK 2019','https://cdkjournal.com/index.php/cdk/article/download/417/378/417']
+];
+
+/* QR Code encoder, (c) 2009 Kazuhiko Arase, MIT license. Diambil dari qrcode-terminal (vendor). */
+var buatQR=(function(){var M={};function require(p){return M[p.replace('./','')]}
+M['QRMode']=(function(){var module={exports:{}};
+module.exports = {
+    MODE_NUMBER :       1 << 0,
+    MODE_ALPHA_NUM :    1 << 1,
+    MODE_8BIT_BYTE :    1 << 2,
+    MODE_KANJI :        1 << 3
+};
+
+return module.exports})();
+M['QRErrorCorrectLevel']=(function(){var module={exports:{}};
+module.exports = {
+	L : 1,
+	M : 0,
+	Q : 3,
+	H : 2
+};
+
+
+return module.exports})();
+M['QRMaskPattern']=(function(){var module={exports:{}};
+module.exports = {
+	PATTERN000 : 0,
+	PATTERN001 : 1,
+	PATTERN010 : 2,
+	PATTERN011 : 3,
+	PATTERN100 : 4,
+	PATTERN101 : 5,
+	PATTERN110 : 6,
+	PATTERN111 : 7
+};
+
+return module.exports})();
+M['QRMath']=(function(){var module={exports:{}};
+var QRMath = {
+
+	glog : function(n) {
+	
+		if (n < 1) {
+			throw new Error("glog(" + n + ")");
+		}
+		
+		return QRMath.LOG_TABLE[n];
+	},
+	
+	gexp : function(n) {
+	
+		while (n < 0) {
+			n += 255;
+		}
+	
+		while (n >= 256) {
+			n -= 255;
+		}
+	
+		return QRMath.EXP_TABLE[n];
+	},
+	
+	EXP_TABLE : new Array(256),
+	
+	LOG_TABLE : new Array(256)
+
+};
+	
+for (var i = 0; i < 8; i++) {
+	QRMath.EXP_TABLE[i] = 1 << i;
+}
+for (var i = 8; i < 256; i++) {
+	QRMath.EXP_TABLE[i] = QRMath.EXP_TABLE[i - 4]
+		^ QRMath.EXP_TABLE[i - 5]
+		^ QRMath.EXP_TABLE[i - 6]
+		^ QRMath.EXP_TABLE[i - 8];
+}
+for (var i = 0; i < 255; i++) {
+	QRMath.LOG_TABLE[QRMath.EXP_TABLE[i] ] = i;
+}
+
+module.exports = QRMath;
+
+return module.exports})();
+M['QRPolynomial']=(function(){var module={exports:{}};
+var QRMath = require('./QRMath');
+
+function QRPolynomial(num, shift) {
+	if (num.length === undefined) {
+		throw new Error(num.length + "/" + shift);
+	}
+
+	var offset = 0;
+
+	while (offset < num.length && num[offset] === 0) {
+		offset++;
+	}
+
+	this.num = new Array(num.length - offset + shift);
+	for (var i = 0; i < num.length - offset; i++) {
+		this.num[i] = num[i + offset];
+	}
+}
+
+QRPolynomial.prototype = {
+
+	get : function(index) {
+		return this.num[index];
+	},
+	
+	getLength : function() {
+		return this.num.length;
+	},
+	
+	multiply : function(e) {
+	
+		var num = new Array(this.getLength() + e.getLength() - 1);
+	
+		for (var i = 0; i < this.getLength(); i++) {
+			for (var j = 0; j < e.getLength(); j++) {
+				num[i + j] ^= QRMath.gexp(QRMath.glog(this.get(i) ) + QRMath.glog(e.get(j) ) );
+			}
+		}
+	
+		return new QRPolynomial(num, 0);
+	},
+	
+	mod : function(e) {
+	
+		if (this.getLength() - e.getLength() < 0) {
+			return this;
+		}
+	
+		var ratio = QRMath.glog(this.get(0) ) - QRMath.glog(e.get(0) );
+	
+		var num = new Array(this.getLength() );
+		
+		for (var i = 0; i < this.getLength(); i++) {
+			num[i] = this.get(i);
+		}
+		
+		for (var x = 0; x < e.getLength(); x++) {
+			num[x] ^= QRMath.gexp(QRMath.glog(e.get(x) ) + ratio);
+		}
+	
+		// recursive call
+		return new QRPolynomial(num, 0).mod(e);
+	}
+};
+
+module.exports = QRPolynomial;
+
+return module.exports})();
+M['QR8bitByte']=(function(){var module={exports:{}};
+var QRMode = require('./QRMode');
+
+function QR8bitByte(data) {
+	this.mode = QRMode.MODE_8BIT_BYTE;
+	this.data = data;
+}
+
+QR8bitByte.prototype = {
+
+	getLength : function() {
+		return this.data.length;
+	},
+	
+	write : function(buffer) {
+		for (var i = 0; i < this.data.length; i++) {
+			// not JIS ...
+			buffer.put(this.data.charCodeAt(i), 8);
+		}
+	}
+};
+
+module.exports = QR8bitByte;
+
+return module.exports})();
+M['QRBitBuffer']=(function(){var module={exports:{}};
+function QRBitBuffer() {
+	this.buffer = [];
+	this.length = 0;
+}
+
+QRBitBuffer.prototype = {
+
+	get : function(index) {
+		var bufIndex = Math.floor(index / 8);
+		return ( (this.buffer[bufIndex] >>> (7 - index % 8) ) & 1) == 1;
+	},
+	
+	put : function(num, length) {
+		for (var i = 0; i < length; i++) {
+			this.putBit( ( (num >>> (length - i - 1) ) & 1) == 1);
+		}
+	},
+	
+	getLengthInBits : function() {
+		return this.length;
+	},
+	
+	putBit : function(bit) {
+	
+		var bufIndex = Math.floor(this.length / 8);
+		if (this.buffer.length <= bufIndex) {
+			this.buffer.push(0);
+		}
+	
+		if (bit) {
+			this.buffer[bufIndex] |= (0x80 >>> (this.length % 8) );
+		}
+	
+		this.length++;
+	}
+};
+
+module.exports = QRBitBuffer;
+
+return module.exports})();
+M['QRRSBlock']=(function(){var module={exports:{}};
+var QRErrorCorrectLevel = require('./QRErrorCorrectLevel');
+
+function QRRSBlock(totalCount, dataCount) {
+	this.totalCount = totalCount;
+	this.dataCount  = dataCount;
+}
+
+QRRSBlock.RS_BLOCK_TABLE = [
+
+	// L
+	// M
+	// Q
+	// H
+
+	// 1
+	[1, 26, 19],
+	[1, 26, 16],
+	[1, 26, 13],
+	[1, 26, 9],
+	
+	// 2
+	[1, 44, 34],
+	[1, 44, 28],
+	[1, 44, 22],
+	[1, 44, 16],
+
+	// 3
+	[1, 70, 55],
+	[1, 70, 44],
+	[2, 35, 17],
+	[2, 35, 13],
+
+	// 4		
+	[1, 100, 80],
+	[2, 50, 32],
+	[2, 50, 24],
+	[4, 25, 9],
+	
+	// 5
+	[1, 134, 108],
+	[2, 67, 43],
+	[2, 33, 15, 2, 34, 16],
+	[2, 33, 11, 2, 34, 12],
+	
+	// 6
+	[2, 86, 68],
+	[4, 43, 27],
+	[4, 43, 19],
+	[4, 43, 15],
+	
+	// 7		
+	[2, 98, 78],
+	[4, 49, 31],
+	[2, 32, 14, 4, 33, 15],
+	[4, 39, 13, 1, 40, 14],
+	
+	// 8
+	[2, 121, 97],
+	[2, 60, 38, 2, 61, 39],
+	[4, 40, 18, 2, 41, 19],
+	[4, 40, 14, 2, 41, 15],
+	
+	// 9
+	[2, 146, 116],
+	[3, 58, 36, 2, 59, 37],
+	[4, 36, 16, 4, 37, 17],
+	[4, 36, 12, 4, 37, 13],
+	
+	// 10		
+	[2, 86, 68, 2, 87, 69],
+	[4, 69, 43, 1, 70, 44],
+	[6, 43, 19, 2, 44, 20],
+	[6, 43, 15, 2, 44, 16],
+
+	// 11
+	[4, 101, 81],
+	[1, 80, 50, 4, 81, 51],
+	[4, 50, 22, 4, 51, 23],
+	[3, 36, 12, 8, 37, 13],
+
+	// 12
+	[2, 116, 92, 2, 117, 93],
+	[6, 58, 36, 2, 59, 37],
+	[4, 46, 20, 6, 47, 21],
+	[7, 42, 14, 4, 43, 15],
+
+	// 13
+	[4, 133, 107],
+	[8, 59, 37, 1, 60, 38],
+	[8, 44, 20, 4, 45, 21],
+	[12, 33, 11, 4, 34, 12],
+
+	// 14
+	[3, 145, 115, 1, 146, 116],
+	[4, 64, 40, 5, 65, 41],
+	[11, 36, 16, 5, 37, 17],
+	[11, 36, 12, 5, 37, 13],
+
+	// 15
+	[5, 109, 87, 1, 110, 88],
+	[5, 65, 41, 5, 66, 42],
+	[5, 54, 24, 7, 55, 25],
+	[11, 36, 12],
+
+	// 16
+	[5, 122, 98, 1, 123, 99],
+	[7, 73, 45, 3, 74, 46],
+	[15, 43, 19, 2, 44, 20],
+	[3, 45, 15, 13, 46, 16],
+
+	// 17
+	[1, 135, 107, 5, 136, 108],
+	[10, 74, 46, 1, 75, 47],
+	[1, 50, 22, 15, 51, 23],
+	[2, 42, 14, 17, 43, 15],
+
+	// 18
+	[5, 150, 120, 1, 151, 121],
+	[9, 69, 43, 4, 70, 44],
+	[17, 50, 22, 1, 51, 23],
+	[2, 42, 14, 19, 43, 15],
+
+	// 19
+	[3, 141, 113, 4, 142, 114],
+	[3, 70, 44, 11, 71, 45],
+	[17, 47, 21, 4, 48, 22],
+	[9, 39, 13, 16, 40, 14],
+
+	// 20
+	[3, 135, 107, 5, 136, 108],
+	[3, 67, 41, 13, 68, 42],
+	[15, 54, 24, 5, 55, 25],
+	[15, 43, 15, 10, 44, 16],
+
+	// 21
+	[4, 144, 116, 4, 145, 117],
+	[17, 68, 42],
+	[17, 50, 22, 6, 51, 23],
+	[19, 46, 16, 6, 47, 17],
+
+	// 22
+	[2, 139, 111, 7, 140, 112],
+	[17, 74, 46],
+	[7, 54, 24, 16, 55, 25],
+	[34, 37, 13],
+
+	// 23
+	[4, 151, 121, 5, 152, 122],
+	[4, 75, 47, 14, 76, 48],
+	[11, 54, 24, 14, 55, 25],
+	[16, 45, 15, 14, 46, 16],
+
+	// 24
+	[6, 147, 117, 4, 148, 118],
+	[6, 73, 45, 14, 74, 46],
+	[11, 54, 24, 16, 55, 25],
+	[30, 46, 16, 2, 47, 17],
+
+	// 25
+	[8, 132, 106, 4, 133, 107],
+	[8, 75, 47, 13, 76, 48],
+	[7, 54, 24, 22, 55, 25],
+	[22, 45, 15, 13, 46, 16],
+
+	// 26
+	[10, 142, 114, 2, 143, 115],
+	[19, 74, 46, 4, 75, 47],
+	[28, 50, 22, 6, 51, 23],
+	[33, 46, 16, 4, 47, 17],
+
+	// 27
+	[8, 152, 122, 4, 153, 123],
+	[22, 73, 45, 3, 74, 46],
+	[8, 53, 23, 26, 54, 24],
+	[12, 45, 15, 28, 46, 16],
+
+	// 28
+	[3, 147, 117, 10, 148, 118],
+	[3, 73, 45, 23, 74, 46],
+	[4, 54, 24, 31, 55, 25],
+	[11, 45, 15, 31, 46, 16],
+
+	// 29
+	[7, 146, 116, 7, 147, 117],
+	[21, 73, 45, 7, 74, 46],
+	[1, 53, 23, 37, 54, 24],
+	[19, 45, 15, 26, 46, 16],
+
+	// 30
+	[5, 145, 115, 10, 146, 116],
+	[19, 75, 47, 10, 76, 48],
+	[15, 54, 24, 25, 55, 25],
+	[23, 45, 15, 25, 46, 16],
+
+	// 31
+	[13, 145, 115, 3, 146, 116],
+	[2, 74, 46, 29, 75, 47],
+	[42, 54, 24, 1, 55, 25],
+	[23, 45, 15, 28, 46, 16],
+
+	// 32
+	[17, 145, 115],
+	[10, 74, 46, 23, 75, 47],
+	[10, 54, 24, 35, 55, 25],
+	[19, 45, 15, 35, 46, 16],
+
+	// 33
+	[17, 145, 115, 1, 146, 116],
+	[14, 74, 46, 21, 75, 47],
+	[29, 54, 24, 19, 55, 25],
+	[11, 45, 15, 46, 46, 16],
+
+	// 34
+	[13, 145, 115, 6, 146, 116],
+	[14, 74, 46, 23, 75, 47],
+	[44, 54, 24, 7, 55, 25],
+	[59, 46, 16, 1, 47, 17],
+
+	// 35
+	[12, 151, 121, 7, 152, 122],
+	[12, 75, 47, 26, 76, 48],
+	[39, 54, 24, 14, 55, 25],
+	[22, 45, 15, 41, 46, 16],
+
+	// 36
+	[6, 151, 121, 14, 152, 122],
+	[6, 75, 47, 34, 76, 48],
+	[46, 54, 24, 10, 55, 25],
+	[2, 45, 15, 64, 46, 16],
+
+	// 37
+	[17, 152, 122, 4, 153, 123],
+	[29, 74, 46, 14, 75, 47],
+	[49, 54, 24, 10, 55, 25],
+	[24, 45, 15, 46, 46, 16],
+
+	// 38
+	[4, 152, 122, 18, 153, 123],
+	[13, 74, 46, 32, 75, 47],
+	[48, 54, 24, 14, 55, 25],
+	[42, 45, 15, 32, 46, 16],
+
+	// 39
+	[20, 147, 117, 4, 148, 118],
+	[40, 75, 47, 7, 76, 48],
+	[43, 54, 24, 22, 55, 25],
+	[10, 45, 15, 67, 46, 16],
+
+	// 40
+	[19, 148, 118, 6, 149, 119],
+	[18, 75, 47, 31, 76, 48],
+	[34, 54, 24, 34, 55, 25],
+	[20, 45, 15, 61, 46, 16]
+];
+
+QRRSBlock.getRSBlocks = function(typeNumber, errorCorrectLevel) {
+	
+	var rsBlock = QRRSBlock.getRsBlockTable(typeNumber, errorCorrectLevel);
+	
+	if (rsBlock === undefined) {
+		throw new Error("bad rs block @ typeNumber:" + typeNumber + "/errorCorrectLevel:" + errorCorrectLevel);
+	}
+
+	var length = rsBlock.length / 3;
+	
+	var list = [];
+	
+	for (var i = 0; i < length; i++) {
+
+		var count = rsBlock[i * 3 + 0];
+		var totalCount = rsBlock[i * 3 + 1];
+		var dataCount  = rsBlock[i * 3 + 2];
+
+		for (var j = 0; j < count; j++) {
+			list.push(new QRRSBlock(totalCount, dataCount) );	
+		}
+	}
+	
+	return list;
+};
+
+QRRSBlock.getRsBlockTable = function(typeNumber, errorCorrectLevel) {
+
+	switch(errorCorrectLevel) {
+	case QRErrorCorrectLevel.L :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 0];
+	case QRErrorCorrectLevel.M :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 1];
+	case QRErrorCorrectLevel.Q :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 2];
+	case QRErrorCorrectLevel.H :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 3];
+	default :
+		return undefined;
+	}
+};
+
+module.exports = QRRSBlock;
+
+return module.exports})();
+M['QRUtil']=(function(){var module={exports:{}};
+var QRMode = require('./QRMode');
+var QRPolynomial = require('./QRPolynomial');
+var QRMath = require('./QRMath');
+var QRMaskPattern = require('./QRMaskPattern');
+
+var QRUtil = {
+
+    PATTERN_POSITION_TABLE : [
+        [],
+        [6, 18],
+        [6, 22],
+        [6, 26],
+        [6, 30],
+        [6, 34],
+        [6, 22, 38],
+        [6, 24, 42],
+        [6, 26, 46],
+        [6, 28, 50],
+        [6, 30, 54],        
+        [6, 32, 58],
+        [6, 34, 62],
+        [6, 26, 46, 66],
+        [6, 26, 48, 70],
+        [6, 26, 50, 74],
+        [6, 30, 54, 78],
+        [6, 30, 56, 82],
+        [6, 30, 58, 86],
+        [6, 34, 62, 90],
+        [6, 28, 50, 72, 94],
+        [6, 26, 50, 74, 98],
+        [6, 30, 54, 78, 102],
+        [6, 28, 54, 80, 106],
+        [6, 32, 58, 84, 110],
+        [6, 30, 58, 86, 114],
+        [6, 34, 62, 90, 118],
+        [6, 26, 50, 74, 98, 122],
+        [6, 30, 54, 78, 102, 126],
+        [6, 26, 52, 78, 104, 130],
+        [6, 30, 56, 82, 108, 134],
+        [6, 34, 60, 86, 112, 138],
+        [6, 30, 58, 86, 114, 142],
+        [6, 34, 62, 90, 118, 146],
+        [6, 30, 54, 78, 102, 126, 150],
+        [6, 24, 50, 76, 102, 128, 154],
+        [6, 28, 54, 80, 106, 132, 158],
+        [6, 32, 58, 84, 110, 136, 162],
+        [6, 26, 54, 82, 110, 138, 166],
+        [6, 30, 58, 86, 114, 142, 170]
+    ],
+
+    G15 : (1 << 10) | (1 << 8) | (1 << 5) | (1 << 4) | (1 << 2) | (1 << 1) | (1 << 0),
+    G18 : (1 << 12) | (1 << 11) | (1 << 10) | (1 << 9) | (1 << 8) | (1 << 5) | (1 << 2) | (1 << 0),
+    G15_MASK : (1 << 14) | (1 << 12) | (1 << 10)    | (1 << 4) | (1 << 1),
+
+    getBCHTypeInfo : function(data) {
+        var d = data << 10;
+        while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15) >= 0) {
+            d ^= (QRUtil.G15 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15) ) );    
+        }
+        return ( (data << 10) | d) ^ QRUtil.G15_MASK;
+    },
+
+    getBCHTypeNumber : function(data) {
+        var d = data << 12;
+        while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18) >= 0) {
+            d ^= (QRUtil.G18 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18) ) );    
+        }
+        return (data << 12) | d;
+    },
+
+    getBCHDigit : function(data) {
+
+        var digit = 0;
+
+        while (data !== 0) {
+            digit++;
+            data >>>= 1;
+        }
+
+        return digit;
+    },
+
+    getPatternPosition : function(typeNumber) {
+        return QRUtil.PATTERN_POSITION_TABLE[typeNumber - 1];
+    },
+
+    getMask : function(maskPattern, i, j) {
+        
+        switch (maskPattern) {
+            
+        case QRMaskPattern.PATTERN000 : return (i + j) % 2 === 0;
+        case QRMaskPattern.PATTERN001 : return i % 2 === 0;
+        case QRMaskPattern.PATTERN010 : return j % 3 === 0;
+        case QRMaskPattern.PATTERN011 : return (i + j) % 3 === 0;
+        case QRMaskPattern.PATTERN100 : return (Math.floor(i / 2) + Math.floor(j / 3) ) % 2 === 0;
+        case QRMaskPattern.PATTERN101 : return (i * j) % 2 + (i * j) % 3 === 0;
+        case QRMaskPattern.PATTERN110 : return ( (i * j) % 2 + (i * j) % 3) % 2 === 0;
+        case QRMaskPattern.PATTERN111 : return ( (i * j) % 3 + (i + j) % 2) % 2 === 0;
+
+        default :
+            throw new Error("bad maskPattern:" + maskPattern);
+        }
+    },
+
+    getErrorCorrectPolynomial : function(errorCorrectLength) {
+
+        var a = new QRPolynomial([1], 0);
+
+        for (var i = 0; i < errorCorrectLength; i++) {
+            a = a.multiply(new QRPolynomial([1, QRMath.gexp(i)], 0) );
+        }
+
+        return a;
+    },
+
+    getLengthInBits : function(mode, type) {
+
+        if (1 <= type && type < 10) {
+
+            // 1 - 9
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 10;
+            case QRMode.MODE_ALPHA_NUM  : return 9;
+            case QRMode.MODE_8BIT_BYTE  : return 8;
+            case QRMode.MODE_KANJI      : return 8;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else if (type < 27) {
+
+            // 10 - 26
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 12;
+            case QRMode.MODE_ALPHA_NUM  : return 11;
+            case QRMode.MODE_8BIT_BYTE  : return 16;
+            case QRMode.MODE_KANJI      : return 10;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else if (type < 41) {
+
+            // 27 - 40
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 14;
+            case QRMode.MODE_ALPHA_NUM  : return 13;
+            case QRMode.MODE_8BIT_BYTE  : return 16;
+            case QRMode.MODE_KANJI      : return 12;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else {
+            throw new Error("type:" + type);
+        }
+    },
+
+    getLostPoint : function(qrCode) {
+        
+        var moduleCount = qrCode.getModuleCount();
+        var lostPoint = 0;
+        var row = 0; 
+        var col = 0;
+
+        
+        // LEVEL1
+        
+        for (row = 0; row < moduleCount; row++) {
+
+            for (col = 0; col < moduleCount; col++) {
+
+                var sameCount = 0;
+                var dark = qrCode.isDark(row, col);
+
+                for (var r = -1; r <= 1; r++) {
+
+                    if (row + r < 0 || moduleCount <= row + r) {
+                        continue;
+                    }
+
+                    for (var c = -1; c <= 1; c++) {
+
+                        if (col + c < 0 || moduleCount <= col + c) {
+                            continue;
+                        }
+
+                        if (r === 0 && c === 0) {
+                            continue;
+                        }
+
+                        if (dark === qrCode.isDark(row + r, col + c) ) {
+                            sameCount++;
+                        }
+                    }
+                }
+
+                if (sameCount > 5) {
+                    lostPoint += (3 + sameCount - 5);
+                }
+            }
+        }
+
+        // LEVEL2
+
+        for (row = 0; row < moduleCount - 1; row++) {
+            for (col = 0; col < moduleCount - 1; col++) {
+                var count = 0;
+                if (qrCode.isDark(row,     col    ) ) count++;
+                if (qrCode.isDark(row + 1, col    ) ) count++;
+                if (qrCode.isDark(row,     col + 1) ) count++;
+                if (qrCode.isDark(row + 1, col + 1) ) count++;
+                if (count === 0 || count === 4) {
+                    lostPoint += 3;
+                }
+            }
+        }
+
+        // LEVEL3
+
+        for (row = 0; row < moduleCount; row++) {
+            for (col = 0; col < moduleCount - 6; col++) {
+                if (qrCode.isDark(row, col) && 
+                        !qrCode.isDark(row, col + 1) && 
+                         qrCode.isDark(row, col + 2) && 
+                         qrCode.isDark(row, col + 3) && 
+                         qrCode.isDark(row, col + 4) && 
+                        !qrCode.isDark(row, col + 5) && 
+                         qrCode.isDark(row, col + 6) ) {
+                    lostPoint += 40;
+                }
+            }
+        }
+
+        for (col = 0; col < moduleCount; col++) {
+            for (row = 0; row < moduleCount - 6; row++) {
+                if (qrCode.isDark(row, col) &&
+                        !qrCode.isDark(row + 1, col) &&
+                         qrCode.isDark(row + 2, col) &&
+                         qrCode.isDark(row + 3, col) &&
+                         qrCode.isDark(row + 4, col) &&
+                        !qrCode.isDark(row + 5, col) &&
+                         qrCode.isDark(row + 6, col) ) {
+                    lostPoint += 40;
+                }
+            }
+        }
+
+        // LEVEL4
+        
+        var darkCount = 0;
+
+        for (col = 0; col < moduleCount; col++) {
+            for (row = 0; row < moduleCount; row++) {
+                if (qrCode.isDark(row, col) ) {
+                    darkCount++;
+                }
+            }
+        }
+        
+        var ratio = Math.abs(100 * darkCount / moduleCount / moduleCount - 50) / 5;
+        lostPoint += ratio * 10;
+
+        return lostPoint;       
+    }
+
+};
+
+module.exports = QRUtil;
+
+return module.exports})();
+M['index']=(function(){var module={exports:{}};
+//---------------------------------------------------------------------
+// QRCode for JavaScript
+//
+// Copyright (c) 2009 Kazuhiko Arase
+//
+// URL: http://www.d-project.com/
+//
+// Licensed under the MIT license:
+//   http://www.opensource.org/licenses/mit-license.php
+//
+// The word "QR Code" is registered trademark of 
+// DENSO WAVE INCORPORATED
+//   http://www.denso-wave.com/qrcode/faqpatent-e.html
+//
+//---------------------------------------------------------------------
+// Modified to work in node for this project (and some refactoring)
+//---------------------------------------------------------------------
+
+var QR8bitByte = require('./QR8bitByte');
+var QRUtil = require('./QRUtil');
+var QRPolynomial = require('./QRPolynomial');
+var QRRSBlock = require('./QRRSBlock');
+var QRBitBuffer = require('./QRBitBuffer');
+
+function QRCode(typeNumber, errorCorrectLevel) {
+	this.typeNumber = typeNumber;
+	this.errorCorrectLevel = errorCorrectLevel;
+	this.modules = null;
+	this.moduleCount = 0;
+	this.dataCache = null;
+	this.dataList = [];
+}
+
+QRCode.prototype = {
+	
+	addData : function(data) {
+		var newData = new QR8bitByte(data);
+		this.dataList.push(newData);
+		this.dataCache = null;
+	},
+	
+	isDark : function(row, col) {
+		if (row < 0 || this.moduleCount <= row || col < 0 || this.moduleCount <= col) {
+			throw new Error(row + "," + col);
+		}
+		return this.modules[row][col];
+	},
+
+	getModuleCount : function() {
+		return this.moduleCount;
+	},
+	
+	make : function() {
+		// Calculate automatically typeNumber if provided is < 1
+		if (this.typeNumber < 1 ){
+			var typeNumber = 1;
+			for (typeNumber = 1; typeNumber < 40; typeNumber++) {
+				var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, this.errorCorrectLevel);
+
+				var buffer = new QRBitBuffer();
+				var totalDataCount = 0;
+				for (var i = 0; i < rsBlocks.length; i++) {
+					totalDataCount += rsBlocks[i].dataCount;
+				}
+
+				for (var x = 0; x < this.dataList.length; x++) {
+					var data = this.dataList[x];
+					buffer.put(data.mode, 4);
+					buffer.put(data.getLength(), QRUtil.getLengthInBits(data.mode, typeNumber) );
+					data.write(buffer);
+				}
+				if (buffer.getLengthInBits() <= totalDataCount * 8)
+					break;
+			}
+			this.typeNumber = typeNumber;
+		}
+		this.makeImpl(false, this.getBestMaskPattern() );
+	},
+	
+	makeImpl : function(test, maskPattern) {
+		
+		this.moduleCount = this.typeNumber * 4 + 17;
+		this.modules = new Array(this.moduleCount);
+		
+		for (var row = 0; row < this.moduleCount; row++) {
+			
+			this.modules[row] = new Array(this.moduleCount);
+			
+			for (var col = 0; col < this.moduleCount; col++) {
+				this.modules[row][col] = null;//(col + row) % 3;
+			}
+		}
+	
+		this.setupPositionProbePattern(0, 0);
+		this.setupPositionProbePattern(this.moduleCount - 7, 0);
+		this.setupPositionProbePattern(0, this.moduleCount - 7);
+		this.setupPositionAdjustPattern();
+		this.setupTimingPattern();
+		this.setupTypeInfo(test, maskPattern);
+		
+		if (this.typeNumber >= 7) {
+			this.setupTypeNumber(test);
+		}
+	
+		if (this.dataCache === null) {
+			this.dataCache = QRCode.createData(this.typeNumber, this.errorCorrectLevel, this.dataList);
+		}
+	
+		this.mapData(this.dataCache, maskPattern);
+	},
+
+	setupPositionProbePattern : function(row, col)  {
+		
+		for (var r = -1; r <= 7; r++) {
+			
+			if (row + r <= -1 || this.moduleCount <= row + r) continue;
+			
+			for (var c = -1; c <= 7; c++) {
+				
+				if (col + c <= -1 || this.moduleCount <= col + c) continue;
+				
+				if ( (0 <= r && r <= 6 && (c === 0 || c === 6) ) || 
+                     (0 <= c && c <= 6 && (r === 0 || r === 6) ) || 
+                     (2 <= r && r <= 4 && 2 <= c && c <= 4) ) {
+					this.modules[row + r][col + c] = true;
+				} else {
+					this.modules[row + r][col + c] = false;
+				}
+			}		
+		}		
+	},
+	
+	getBestMaskPattern : function() {
+	
+		var minLostPoint = 0;
+		var pattern = 0;
+	
+		for (var i = 0; i < 8; i++) {
+			
+			this.makeImpl(true, i);
+	
+			var lostPoint = QRUtil.getLostPoint(this);
+	
+			if (i === 0 || minLostPoint >  lostPoint) {
+				minLostPoint = lostPoint;
+				pattern = i;
+			}
+		}
+	
+		return pattern;
+	},
+	
+	createMovieClip : function(target_mc, instance_name, depth) {
+	
+		var qr_mc = target_mc.createEmptyMovieClip(instance_name, depth);
+		var cs = 1;
+	
+		this.make();
+
+		for (var row = 0; row < this.modules.length; row++) {
+			
+			var y = row * cs;
+			
+			for (var col = 0; col < this.modules[row].length; col++) {
+	
+				var x = col * cs;
+				var dark = this.modules[row][col];
+			
+				if (dark) {
+					qr_mc.beginFill(0, 100);
+					qr_mc.moveTo(x, y);
+					qr_mc.lineTo(x + cs, y);
+					qr_mc.lineTo(x + cs, y + cs);
+					qr_mc.lineTo(x, y + cs);
+					qr_mc.endFill();
+				}
+			}
+		}
+		
+		return qr_mc;
+	},
+
+	setupTimingPattern : function() {
+		
+		for (var r = 8; r < this.moduleCount - 8; r++) {
+			if (this.modules[r][6] !== null) {
+				continue;
+			}
+			this.modules[r][6] = (r % 2 === 0);
+		}
+	
+		for (var c = 8; c < this.moduleCount - 8; c++) {
+			if (this.modules[6][c] !== null) {
+				continue;
+			}
+			this.modules[6][c] = (c % 2 === 0);
+		}
+	},
+	
+	setupPositionAdjustPattern : function() {
+	
+		var pos = QRUtil.getPatternPosition(this.typeNumber);
+		
+		for (var i = 0; i < pos.length; i++) {
+		
+			for (var j = 0; j < pos.length; j++) {
+			
+				var row = pos[i];
+				var col = pos[j];
+				
+				if (this.modules[row][col] !== null) {
+					continue;
+				}
+				
+				for (var r = -2; r <= 2; r++) {
+				
+					for (var c = -2; c <= 2; c++) {
+					
+						if (Math.abs(r) === 2 || 
+                            Math.abs(c) === 2 ||
+                            (r === 0 && c === 0) ) {
+							this.modules[row + r][col + c] = true;
+						} else {
+							this.modules[row + r][col + c] = false;
+						}
+					}
+				}
+			}
+		}
+	},
+	
+	setupTypeNumber : function(test) {
+	
+		var bits = QRUtil.getBCHTypeNumber(this.typeNumber);
+        var mod;
+	
+		for (var i = 0; i < 18; i++) {
+			mod = (!test && ( (bits >> i) & 1) === 1);
+			this.modules[Math.floor(i / 3)][i % 3 + this.moduleCount - 8 - 3] = mod;
+		}
+	
+		for (var x = 0; x < 18; x++) {
+			mod = (!test && ( (bits >> x) & 1) === 1);
+			this.modules[x % 3 + this.moduleCount - 8 - 3][Math.floor(x / 3)] = mod;
+		}
+	},
+	
+	setupTypeInfo : function(test, maskPattern) {
+	
+		var data = (this.errorCorrectLevel << 3) | maskPattern;
+		var bits = QRUtil.getBCHTypeInfo(data);
+        var mod;
+	
+		// vertical		
+		for (var v = 0; v < 15; v++) {
+	
+			mod = (!test && ( (bits >> v) & 1) === 1);
+	
+			if (v < 6) {
+				this.modules[v][8] = mod;
+			} else if (v < 8) {
+				this.modules[v + 1][8] = mod;
+			} else {
+				this.modules[this.moduleCount - 15 + v][8] = mod;
+			}
+		}
+	
+		// horizontal
+		for (var h = 0; h < 15; h++) {
+	
+			mod = (!test && ( (bits >> h) & 1) === 1);
+			
+			if (h < 8) {
+				this.modules[8][this.moduleCount - h - 1] = mod;
+			} else if (h < 9) {
+				this.modules[8][15 - h - 1 + 1] = mod;
+			} else {
+				this.modules[8][15 - h - 1] = mod;
+			}
+		}
+	
+		// fixed module
+		this.modules[this.moduleCount - 8][8] = (!test);
+	
+	},
+	
+	mapData : function(data, maskPattern) {
+		
+		var inc = -1;
+		var row = this.moduleCount - 1;
+		var bitIndex = 7;
+		var byteIndex = 0;
+		
+		for (var col = this.moduleCount - 1; col > 0; col -= 2) {
+	
+			if (col === 6) col--;
+	
+			while (true) {
+	
+				for (var c = 0; c < 2; c++) {
+					
+					if (this.modules[row][col - c] === null) {
+						
+						var dark = false;
+	
+						if (byteIndex < data.length) {
+							dark = ( ( (data[byteIndex] >>> bitIndex) & 1) === 1);
+						}
+	
+						var mask = QRUtil.getMask(maskPattern, row, col - c);
+	
+						if (mask) {
+							dark = !dark;
+						}
+						
+						this.modules[row][col - c] = dark;
+						bitIndex--;
+	
+						if (bitIndex === -1) {
+							byteIndex++;
+							bitIndex = 7;
+						}
+					}
+				}
+								
+				row += inc;
+	
+				if (row < 0 || this.moduleCount <= row) {
+					row -= inc;
+					inc = -inc;
+					break;
+				}
+			}
+		}
+		
+	}
+
+};
+
+QRCode.PAD0 = 0xEC;
+QRCode.PAD1 = 0x11;
+
+QRCode.createData = function(typeNumber, errorCorrectLevel, dataList) {
+	
+	var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, errorCorrectLevel);
+	
+	var buffer = new QRBitBuffer();
+	
+	for (var i = 0; i < dataList.length; i++) {
+		var data = dataList[i];
+		buffer.put(data.mode, 4);
+		buffer.put(data.getLength(), QRUtil.getLengthInBits(data.mode, typeNumber) );
+		data.write(buffer);
+	}
+
+	// calc num max data.
+	var totalDataCount = 0;
+	for (var x = 0; x < rsBlocks.length; x++) {
+		totalDataCount += rsBlocks[x].dataCount;
+	}
+
+	if (buffer.getLengthInBits() > totalDataCount * 8) {
+		throw new Error("code length overflow. (" + 
+            buffer.getLengthInBits() + 
+            ">" +  
+            totalDataCount * 8 + 
+            ")");
+	}
+
+	// end code
+	if (buffer.getLengthInBits() + 4 <= totalDataCount * 8) {
+		buffer.put(0, 4);
+	}
+
+	// padding
+	while (buffer.getLengthInBits() % 8 !== 0) {
+		buffer.putBit(false);
+	}
+
+	// padding
+	while (true) {
+		
+		if (buffer.getLengthInBits() >= totalDataCount * 8) {
+			break;
+		}
+		buffer.put(QRCode.PAD0, 8);
+		
+		if (buffer.getLengthInBits() >= totalDataCount * 8) {
+			break;
+		}
+		buffer.put(QRCode.PAD1, 8);
+	}
+
+	return QRCode.createBytes(buffer, rsBlocks);
+};
+
+QRCode.createBytes = function(buffer, rsBlocks) {
+
+	var offset = 0;
+	
+	var maxDcCount = 0;
+	var maxEcCount = 0;
+	
+	var dcdata = new Array(rsBlocks.length);
+	var ecdata = new Array(rsBlocks.length);
+	
+	for (var r = 0; r < rsBlocks.length; r++) {
+
+		var dcCount = rsBlocks[r].dataCount;
+		var ecCount = rsBlocks[r].totalCount - dcCount;
+
+		maxDcCount = Math.max(maxDcCount, dcCount);
+		maxEcCount = Math.max(maxEcCount, ecCount);
+		
+		dcdata[r] = new Array(dcCount);
+		
+		for (var i = 0; i < dcdata[r].length; i++) {
+			dcdata[r][i] = 0xff & buffer.buffer[i + offset];
+		}
+		offset += dcCount;
+		
+		var rsPoly = QRUtil.getErrorCorrectPolynomial(ecCount);
+		var rawPoly = new QRPolynomial(dcdata[r], rsPoly.getLength() - 1);
+
+		var modPoly = rawPoly.mod(rsPoly);
+		ecdata[r] = new Array(rsPoly.getLength() - 1);
+		for (var x = 0; x < ecdata[r].length; x++) {
+            var modIndex = x + modPoly.getLength() - ecdata[r].length;
+			ecdata[r][x] = (modIndex >= 0)? modPoly.get(modIndex) : 0;
+		}
+
+	}
+	
+	var totalCodeCount = 0;
+	for (var y = 0; y < rsBlocks.length; y++) {
+		totalCodeCount += rsBlocks[y].totalCount;
+	}
+
+	var data = new Array(totalCodeCount);
+	var index = 0;
+
+	for (var z = 0; z < maxDcCount; z++) {
+		for (var s = 0; s < rsBlocks.length; s++) {
+			if (z < dcdata[s].length) {
+				data[index++] = dcdata[s][z];
+			}
+		}
+	}
+
+	for (var xx = 0; xx < maxEcCount; xx++) {
+		for (var t = 0; t < rsBlocks.length; t++) {
+			if (xx < ecdata[t].length) {
+				data[index++] = ecdata[t][xx];
+			}
+		}
+	}
+
+	return data;
+
+};
+
+module.exports = QRCode;
+
+return module.exports})();
+var QRCode=M['index'],L=M['QRErrorCorrectLevel'];return function(teks){var q=new QRCode(-1,L.M);q.addData(teks);q.make();return q}})();
+/* ---------- penyimpanan, petugas, poster QR ---------- */
+const KOL=[['id','ID'],['waktu','Waktu'],['peran','Untuk'],['nama','Nama'],['nik','NIK'],['jk','Jenis kelamin'],['lahir','Tanggal lahir'],['usia','Usia'],['telp','Telepon'],['kerja','Pekerjaan'],['bb','BB (kg)'],['tb','TB (cm)'],['alamat','Alamat'],['kel','Kelurahan/desa'],['kec','Kecamatan'],['kab','Kabupaten/kota'],['status','Status skrining'],['alasan','Alasan'],
+ ['k_bercak','Ada bercak'],['k_mati','Bercak mati rasa'],['k_gatal','Tidak gatal'],['k_kering','Kering/tak berkeringat'],['k_lama','Tidak membaik'],['k_wajah','Benjolan/wajah'],['s_luka','Luka tak terasa'],['s_lemah','Lemah'],['s_kebas','Kebas'],['s_nyeri','Nyeri saraf'],['r_kontak','Kontak'],['r_wilayah','Wilayah'],['r_pernah','Pernah berobat']];
+
+async function kirim(isi){
+ if(!ATUR.SKRIP_URL)return{ok:false,galat:'mati'};
+ const ab=new AbortController(),w=setTimeout(()=>ab.abort(),25000);
+ try{const r=await fetch(ATUR.SKRIP_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(isi),signal:ab.signal});
+  return await r.json()}catch(e){return{ok:false,galat:'jaringan'}}finally{clearTimeout(w)}}
+
+/* simpan hasil satu kali per skrining */
+async function simpanHasil(){
+ if(sesi.simpan==='ok'||sesi.simpan==='kirim')return;
+ if(!ATUR.SKRIP_URL){sesi.simpan='mati';return}
+ const j=sesi.j,r=nilaiSkrining({...j,usia:hitungUsia(j.lahir)}),d={};
+ KOL.forEach(([k])=>{if(j[k]!==undefined)d[k]=j[k]});
+ d.usia=hitungUsia(j.lahir);d.status=HASIL[r.hasil].s;d.alasan=r.alasan.join('; ');
+ sesi.simpan='kirim';tulisSimpan();
+ const h=await kirim({aksi:'simpan',data:d});
+ sesi.simpan=h.ok?'ok':'gagal';tulisSimpan();
+}
+function infoSimpan(){const s=sesi.simpan||'kirim';
+ const t={kirim:'Menyimpan hasil untuk petugas…',ok:'Hasil Anda sudah tersimpan. Petugas kesehatan dapat menindaklanjuti.',gagal:'Hasil belum tersimpan karena koneksi terputus.',mati:'Versi uji coba: penyimpanan belum dipasang, jadi hasil ini belum tersimpan.'}[s];
+ return `<p class="simpan-info s-${s}" id="info-simpan" role="status">${t}${s==='gagal'?' <button type="button" class="tautan" data-aksi="simpan-ulang">Coba lagi</button>':''}</p>`}
+function tulisSimpan(){const el=document.getElementById('info-simpan');if(el)el.outerHTML=infoSimpan()}
+
+/* ---------- halaman petugas ---------- */
+const ptg={u:'',p:'',data:null,cari:'',yakin:null,pesan:''};
+const kelasStatus=s=>(Object.values(HASIL).find(h=>h.s===s)||{}).kls||'biasa';
+function halPetugas(){
+ if(!ATUR.SKRIP_URL)return `<section class="hal"><h1>Halaman petugas</h1><div class="kartu bidang"><h2>Penyimpanan belum dipasang</h2><p>Hasil skrining baru bisa tersimpan dan dibuka di sini setelah Google Sheet dan Apps Script dipasang, lalu alamatnya diisi di <code>pengaturan.js</code>.</p><p class="lembut">Lihat file PANDUAN-PEMASANGAN yang disertakan bersama website.</p></div></section>`;
+ if(!ptg.data)return `<section class="hal"><h1>Masuk petugas</h1><p class="lembut">Khusus petugas kesehatan. Hasil skrining warga hanya bisa dibuka di sini.</p>
+  <form id="fp" class="kartu bidang sempit" novalidate>${''}<div class="isian"><label for="pu">Nama pengguna</label><input id="pu" autocomplete="username" autocapitalize="off" spellcheck="false" value="${esc(ptg.u)}"></div>
+  <div class="isian"><label for="pp">Kata sandi</label><input id="pp" type="password" autocomplete="current-password"></div>
+  <p class="galat" id="galat" role="alert"${ptg.pesan?'':' hidden'}>${esc(ptg.pesan)}</p><button class="tombol t-utama" type="submit">Masuk</button></form></section>`;
+ const q=ptg.cari.toLowerCase(),D=ptg.data.filter(d=>!q||[d.nama,d.nik,d.kel,d.kec,d.kab,d.telp,d.status].join(' ').toLowerCase().includes(q));
+ const hit={};ptg.data.forEach(d=>{hit[d.status]=(hit[d.status]||0)+1});
+ return `<section class="hal lebar"><div class="deret antara"><h1>Hasil skrining</h1><div class="deret"><button type="button" class="tombol t-utama" data-aksi="csv">Unduh (CSV)</button><button type="button" class="tombol t-kedua" data-aksi="muat">Muat ulang</button><button type="button" class="tombol t-kedua" data-aksi="keluar">Keluar</button></div></div>
+ <div class="ringkas-status">${Object.values(HASIL).map(h=>`<div class="${h.kls}"><b>${hit[h.s]||0}</b><span>${h.s}</span></div>`).join('')}</div>
+ <div class="isian"><label for="cari">Cari nama, NIK, wilayah, atau status</label><input id="cari" type="search" value="${esc(ptg.cari)}"></div>
+ <p class="kecil lembut" id="info" role="status">${esc(ptg.pesan)||`Menampilkan ${D.length} dari ${ptg.data.length} hasil, terbaru di atas.`}</p>
+ <div class="gulir"><table class="tabel-ptg"><thead><tr><th>Waktu</th><th>Nama</th><th>Usia</th><th>Telepon</th><th>Wilayah</th><th>Status</th><th></th></tr></thead><tbody>
+ ${D.map(d=>`<tr><td>${esc(d.waktu)}</td><td><details><summary>${esc(d.nama)||'-'}</summary><dl>${[['NIK',d.nik],['Jenis kelamin',d.jk],['Lahir',d.lahir],['Pekerjaan',d.kerja],['BB/TB',`${d.bb||'-'} kg / ${d.tb||'-'} cm`],['Alamat',d.alamat],['Untuk',d.peran],['Alasan',d.alasan],['Kontak',d.r_kontak],['Pernah berobat',d.r_pernah]].map(([a,b])=>`<dt>${a}</dt><dd>${esc(b)||'-'}</dd>`).join('')}</dl></details></td><td>${esc(d.usia)}${d.jk?` · ${d.jk[0]}`:''}</td><td>${esc(d.telp)||'-'}</td><td>${esc([d.kel,d.kec,d.kab].filter(Boolean).join(', '))}</td><td><span class="status ${kelasStatus(d.status)}">${esc(d.status)}</span></td>
+ <td>${ptg.yakin===d.id?`<span class="yakin">Hapus permanen? <button type="button" class="tombol t-hapus" data-hapus-ya="${esc(d.id)}">Ya, hapus</button> <button type="button" class="tautan" data-aksi="batal">Batal</button></span>`:`<button type="button" class="tautan merah" data-hapus="${esc(d.id)}">Hapus</button>`}</td></tr>`).join('')||'<tr><td colspan="7">Belum ada hasil.</td></tr>'}
+ </tbody></table></div></section>`}
+async function masukPetugas(){const u=document.getElementById('pu').value.trim(),p=document.getElementById('pp').value,g=document.getElementById('galat');
+ if(!u||!p){g.textContent='Isi nama pengguna dan kata sandi.';g.hidden=false;return}
+ g.textContent='Memeriksa…';g.hidden=false;const r=await kirim({aksi:'daftar',u,p});
+ if(r.ok){ptg.u=u;ptg.p=p;ptg.data=r.data;ptg.pesan='';gambar();return}
+ ptg.u=u;ptg.pesan=r.galat==='salah'?'Nama pengguna atau kata sandi salah.':r.galat==='terkunci'?'Terlalu banyak percobaan. Coba lagi 15 menit lagi.':'Tidak bisa terhubung. Periksa internet, lalu coba lagi.';gambar()}
+async function muatPetugas(){ptg.pesan='Memuat…';gambar();const r=await kirim({aksi:'daftar',u:ptg.u,p:ptg.p});
+ if(r.ok){ptg.data=r.data;ptg.pesan=''}else ptg.pesan='Gagal memuat. Coba lagi.';gambar()}
+async function hapusData(id){ptg.pesan='Menghapus…';ptg.yakin=null;gambar();const r=await kirim({aksi:'hapus',u:ptg.u,p:ptg.p,id});
+ if(r.ok){ptg.data=ptg.data.filter(d=>d.id!==id);ptg.pesan='Data sudah dihapus.'}else ptg.pesan='Gagal menghapus. Coba lagi.';gambar()}
+function unduhCSV(){const sel=v=>{let s=String(v??'');if(/^[=+\-@]/.test(s))s="'"+s;return /[;"\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s};
+ const t='﻿'+[KOL.map(k=>k[1]),...ptg.data.map(d=>KOL.map(([k])=>(k==='nik'||k==='telp')&&/^\d{6,}$/.test(d[k]||'')?{t:d[k]}:d[k]))].map(r=>r.map(v=>v&&v.t?`="${v.t}"`:sel(v)).join(';')).join('\r\n');
+ unduh(new Blob([t],{type:'text/csv;charset=utf-8'}),`cekbercak-hasil-${new Date().toISOString().slice(0,10)}.csv`)}
+function unduh(blob,nama){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=nama;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},2000)}
+
+/* ---------- poster QR ---------- */
+const alamatSitus=()=>ATUR.SITUS_URL||(location.origin+location.pathname);
+function halQR(){return `<section class="hal"><h1>Poster kode QR</h1>${bicara('Cetak dan tempel poster ini. Warga cukup memindai dengan kamera ponsel untuk mulai cek.','jempol',false,'sigma')}
+ <div id="poster" class="poster"></div>
+ <div class="deret"><button type="button" class="tombol t-utama" data-aksi="png">Unduh gambar (PNG)</button><button type="button" class="tombol t-kedua" data-aksi="cetak">Cetak poster</button></div>
+ <p class="kecil lembut" id="info" role="status">Kode QR mengarah ke <b>${esc(alamatSitus())}</b></p></section>`}
+function posterSVG(url){
+ const q=buatQR(url),n=q.getModuleCount(),k=Math.floor(300/(n+8)),uk=k*(n+8),x0=300-uk/2,y0=318;let d='';
+ for(let r=0;r<n;r++)for(let c=0;c<n;c++)if(q.isDark(r,c))d+=`M${c+4} ${r+4}h1v1h-1z`;
+ const tok=(f,x,y,w)=>f.replace('<svg ',`<svg x="${x}" y="${y}" width="${w}" height="${w*1.22}" `);
+ const F=`font-family="'Baloo 2', 'Arial Rounded MT Bold', Arial, Helvetica, sans-serif"`,G=`font-family="Nunito, Arial, Helvetica, sans-serif"`;
+ const tahap=[['1','Pindai kode'],['2','Jawab pertanyaan'],['3','Lihat langkah']];
+ return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 848" width="600" height="848" role="img" aria-label="Poster CekBercak dengan kode QR">
+ <rect width="600" height="848" fill="#FFFCEB"/><circle cx="520" cy="70" r="150" fill="#FFF3B8"/><circle cx="60" cy="800" r="130" fill="#FFF3B8"/>
+ <text x="40" y="66" ${F} font-size="30" font-weight="800" fill="#3B2F14">Cek<tspan fill="#B07A00">Bercak</tspan></text>
+ <text x="40" y="132" ${F} font-size="44" font-weight="800" fill="#3B2F14">Ada bercak yang</text>
+ <text x="40" y="182" ${F} font-size="44" font-weight="800" fill="#3B2F14">mati rasa?</text>
+ <rect x="40" y="206" width="380" height="44" rx="22" fill="#FFC928"/><text x="62" y="236" ${G} font-size="21" font-weight="800" fill="#3B2F14">Cek kusta mandiri, gratis, 5 menit</text>
+ <rect x="${x0-14}" y="${y0-14}" width="${uk+28}" height="${uk+28}" rx="26" fill="#FFC928" stroke="#3B2F14" stroke-width="4"/>
+ <rect x="${x0}" y="${y0}" width="${uk}" height="${uk}" rx="10" fill="#fff"/>
+ <path transform="translate(${x0} ${y0}) scale(${k})" d="${d}" fill="#1D1A12" shape-rendering="crispEdges"/>
+ ${tok(dokter('sapa'),-6,y0+30,150)}${tok(sigma('jempol'),456,y0+30,150)}
+ <text x="300" y="${y0+uk+62}" text-anchor="middle" ${F} font-size="30" font-weight="800" fill="#3B2F14">Pindai dengan kamera ponsel</text>
+ <text x="300" y="${y0+uk+92}" text-anchor="middle" ${G} font-size="16" font-weight="700" fill="#6B5A2E">${esc(url.replace(/^https?:\/\//,'').replace(/\/$/,''))}</text>
+ ${tahap.map(([a,b],i)=>`<g transform="translate(${40+i*180} ${y0+uk+118})"><rect width="160" height="64" rx="16" fill="#fff" stroke="#E8DBA8" stroke-width="2"/><circle cx="30" cy="32" r="17" fill="#FFC928"/><text x="30" y="39" text-anchor="middle" ${F} font-size="20" font-weight="800" fill="#3B2F14">${a}</text><text x="56" y="38" ${G} font-size="13.5" font-weight="800" fill="#3B2F14">${b}</text></g>`).join('')}
+ <text x="300" y="822" text-anchor="middle" ${G} font-size="16" font-weight="700" fill="#6B5A2E">Kusta bisa sembuh. Pemeriksaan dan obat gratis di puskesmas.</text></svg>`}
+function pasangQR(){const el=document.getElementById('poster');if(el)el.innerHTML=posterSVG(alamatSitus())}
+function unduhPNG(){const s=new XMLSerializer().serializeToString(document.querySelector('#poster svg')),i=new Image(),inf=document.getElementById('info');
+ i.onload=()=>{const c=document.createElement('canvas');c.width=1800;c.height=2544;const x=c.getContext('2d');x.drawImage(i,0,0,1800,2544);
+  c.toBlob(b=>{if(b){unduh(b,'poster-qr-cekbercak.png');inf.textContent='Gambar poster sedang diunduh.'}else inf.textContent='Gambar belum bisa dibuat di peramban ini.'},'image/png')};
+ i.onerror=()=>{inf.textContent='Gambar belum bisa dibuat di peramban ini.'};
+ i.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(s)}
+
+/* ---------- tombol & formulir ---------- */
+document.getElementById('utama').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const a=b.dataset.aksi;
+ if(a==='simpan-ulang')simpanHasil();
+ if(a==='csv')unduhCSV();if(a==='muat')muatPetugas();
+ if(a==='keluar'){Object.assign(ptg,{u:'',p:'',data:null,cari:'',yakin:null,pesan:''});gambar()}
+ if(a==='batal'){ptg.yakin=null;gambar()}
+ if(b.dataset.hapus){ptg.yakin=b.dataset.hapus;ptg.pesan='';gambar()}
+ if(b.dataset.hapusYa)hapusData(b.dataset.hapusYa);
+ if(a==='png')unduhPNG();if(a==='cetak')print();
+});
+document.getElementById('utama').addEventListener('submit',e=>{if(e.target.id==='fp'){e.preventDefault();e.stopImmediatePropagation();masukPetugas()}},true);
+document.getElementById('utama').addEventListener('input',e=>{if(e.target.id==='cari'){ptg.cari=e.target.value;const p=e.target.selectionStart;gambar();const c=document.getElementById('cari');c.focus();c.setSelectionRange(p,p)}});
+
+const utama=document.getElementById('utama');
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const NAMA_T={teguh:'Dokter Teguh',sigma:'Sigma'};
+const bicara=(ucap,pose='sapa',besar=false,siapa='teguh')=>`<div class="dok-wrap${besar?' dok-besar':''}">${tokoh(siapa,pose)}<div class="gelembung"><b class="nama-t">${NAMA_T[siapa]}</b>${ucap}</div></div>`;
+const sesi={tahap:'setuju',i:0,j:{},t:'hasil',simpan:''};
+let saran={b:0,mudah:'',teks:''};
+
+function ilusUtama(){return `<svg viewBox="0 0 380 300" role="img" aria-label="Dokter memeriksa bercak di lengan seorang warga dengan ramah">
+ <circle cx="190" cy="150" r="140" fill="#FFF3B8"/><circle cx="312" cy="58" r="30" fill="#FFC928"/>
+ <svg x="6" y="52" width="196" height="240" viewBox="0 0 200 244">${dokter('sapa').replace(/<svg[^>]*>/,'').replace('</svg>','')}</svg>
+ <path d="M238 292v-64q0-34 50-34t50 34v64z" fill="#FFC928" stroke="#3B2F14" stroke-width="3"/>
+ <rect x="274" y="164" width="28" height="36" rx="12" fill="#A9744C"/>
+ <circle cx="288" cy="128" r="42" fill="#A9744C" stroke="#3B2F14" stroke-width="2.5"/>
+ <path d="M246 124q2-44 44-44t40 44q-20-4-30-18q-20 18-54 18z" fill="#2B2011"/>
+ <circle cx="274" cy="134" r="4.5" fill="#3B2F14"/><circle cx="304" cy="134" r="4.5" fill="#3B2F14"/>
+ <path d="M278 150q11 10 22 0" fill="none" stroke="#6B3322" stroke-width="3" stroke-linecap="round"/>
+ <path d="M246 232q-34 2-70-8" fill="none" stroke="#3B2F14" stroke-width="27" stroke-linecap="round"/>
+ <path d="M246 232q-34 2-70-8" fill="none" stroke="#A9744C" stroke-width="22" stroke-linecap="round"/>
+ <ellipse cx="208" cy="229" rx="17" ry="9" fill="#E5C7AE"/>
+ <circle cx="208" cy="229" r="27" fill="#FFFFFF" fill-opacity=".35" stroke="#7A5600" stroke-width="5"/><path d="M190 250l-19 21" stroke="#7A5600" stroke-width="8" stroke-linecap="round"/>
+</svg>`}
+
+function beranda(){return `<section class="hal"><div class="beranda"><div>
+ <h1>Ada bercak yang mati rasa? Yuk, cek sendiri.</h1>
+ <ul class="janji"><li><i>✓</i><span><b>Rahasia terjaga.</b> Hasil Anda hanya bisa dilihat petugas kesehatan.</span></li>
+ <li><i>✓</i><span><b>Sekitar 5 menit</b> dan gratis.</span></li></ul>
+ <div class="kenalan"><div class="kenalan-dua">${bicara('Halo, saya Dokter Teguh.','sapa')}${bicara('Halo, saya Sigma.','sapa',false,'sigma')}</div>
+ <div class="dok-wrap bersama"><div class="dua-wajah">${dokter('jempol')}${sigma('jempol')}</div><div class="gelembung"><b class="nama-t">Dokter Teguh &amp; Sigma</b>Kami akan menemani Anda cek bercak dari awal sampai selesai. Yuk, mulai!</div></div></div>
+ <div class="deret"><a class="tombol t-utama" href="#cek" id="mulai">Mulai cek</a><a class="tombol t-kedua" href="#pahami">Pahami kusta</a></div>
+ <a class="qr-ajak" href="#barcode"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM5 5v3h3V5zM16 5v3h3V5zM5 16v3h3v-3zM14 14h3v3h-3zM18 18h3v3h-3zM14 18h2v3h-2zM18 14h3v2h-3z" fill="currentColor" fill-rule="evenodd"/></svg><span><b>Unduh poster kode QR</b><small>Tempel di puskesmas, sekolah, atau balai desa</small></span></a>
+ <p>Kusta bisa sembuh. Semakin dini diperiksa, semakin kecil risiko kerusakan saraf.</p>
+ </div><div class="gambar-utama">${ilusUtama()}</div></div></section>`}
+
+/* ---------- alur cek ---------- */
+const soalAktif=()=>TANYA.filter(q=>!q.s||q.s(sesi.j));
+const pilihan=(id,o)=>`<div class="pil" role="radiogroup">${o.map(([v,l])=>`<label><input type="radio" name="${id}" id="${id}-${v}" value="${v}"${sesi.j[id]===v?' checked':''}><span>${l}</span></label>`).join('')}</div>`;
+const isian=(id,lab,tipe='text',bantu='',ekstra='')=>`<div class="isian"><label for="${id}">${lab}</label><input type="${tipe}" id="${id}" name="${id}" value="${esc(sesi.j[id])}" ${ekstra}>${bantu?`<small>${bantu}</small>`:''}</div>`;
+const kaki=(kembali,lanjut='Lanjut')=>`<p class="galat" id="galat" role="alert" hidden></p><div class="deret antara">${kembali?`<button type="button" class="tombol t-kedua" data-aksi="mundur">Kembali</button>`:'<span></span>'}<button type="submit" class="tombol t-utama">${lanjut}</button></div>`;
+function halCek(){
+ const t=sesi.tahap;
+ if(t==='setuju')return `<section class="hal"><form id="f" class="bidang"><span class="status biasa">Langkah 1 dari 4</span><h2>Sebelum mulai</h2>
+  ${bicara('Halo, saya Dokter Teguh. Bersama Sigma, kami akan menemani Anda.')}
+  <ul class="janji"><li><i>✓</i><span><b>Disimpan dengan aman.</b> Data dan hasil Anda disimpan agar petugas kesehatan bisa menindaklanjuti. Hanya petugas yang bisa membukanya.</span></li>
+  <li><i>✓</i><span><b>Bukan diagnosis.</b> Hanya petugas kesehatan yang bisa memastikan kusta.</span></li>
+  <li><i>✓</i><span><b>Boleh berhenti</b> kapan saja.</span></li></ul>
+  <p class="kecil lembut">CekBercak masih versi uji coba dan belum disahkan tenaga kesehatan.</p>
+  <div class="bidang"><span class="lab">Cek ini untuk siapa?</span>${pilihan('peran',[['diri','Diri sendiri'],['anak','Anak saya'],['lain','Orang lain, dengan izinnya']])}</div>
+  <label class="setuju"><input type="checkbox" id="setuju" name="setuju"${sesi.j.setuju?' checked':''}><span>Saya mengerti dan setuju melanjutkan.</span></label>${kaki(false)}</form></section>`;
+ if(t==='diri'){const u=hitungUsia(sesi.j.lahir);return `<section class="hal"><form id="f" class="bidang" novalidate><span class="status biasa">Langkah 2 dari 4 · Identitas</span><h2>Data diri</h2>
+  ${bicara('Isi sesuai KTP bila ada. Data ini hanya dibaca petugas kesehatan.','jempol',false,'sigma')}
+  ${isian('nama','Nama lengkap','text','','autocomplete="name"')}
+  ${isian('nik','NIK','text','16 angka. Boleh dikosongkan.','inputmode="numeric" maxlength="16"')}
+  <div class="bidang"><span class="lab">Jenis kelamin</span><div class="dua">${pilihan('jk',[['Perempuan','Perempuan']])}${pilihan('jk',[['Laki-laki','Laki-laki']])}</div></div>
+  <div class="dua">${isian('lahir','Tanggal lahir','date',u!==null?`Usia: ${u} tahun`:'')}${isian('telp','Nomor telepon','tel','Boleh dikosongkan.','inputmode="tel"')}</div>${kaki(true)}</form></section>`}
+ if(t==='tubuh')return `<section class="hal"><form id="f" class="bidang" novalidate><span class="status biasa">Langkah 2 dari 4 · Identitas</span><h2>Sedikit tentang Anda</h2>
+  ${bicara('Sudah bagus. Tinggal dua halaman singkat.','jempol')}
+  ${isian('kerja','Pekerjaan')}
+  <div class="dua">${isian('bb','Berat badan (kg)','number','','inputmode="decimal" min="1" max="300"')}${isian('tb','Tinggi badan (cm)','number','','inputmode="decimal" min="30" max="250"')}</div>${kaki(true)}</form></section>`;
+ if(t==='alamat')return `<section class="hal"><form id="f" class="bidang" novalidate><span class="status biasa">Langkah 2 dari 4 · Identitas</span><h2>Tempat tinggal</h2>
+  ${bicara('Alamat membantu petugas puskesmas terdekat menghubungi Anda.','sapa',false,'sigma')}
+  ${isian('alamat','Alamat domisili')}${isian('kab','Kabupaten atau kota')}${isian('kec','Kecamatan')}${isian('kel','Kelurahan atau desa')}${kaki(true,'Mulai pertanyaan')}</form></section>`;
+ if(t==='soal'){const S=soalAktif(),q=S[Math.min(sesi.i,S.length-1)],p=Math.round((sesi.i+1)/S.length*100);
+  return `<section class="hal"><form id="f" class="bidang"><div class="deret antara"><span class="status biasa">Langkah 3 dari 4 · ${q.bag}</span><span class="kecil lembut">${sesi.i+1} dari ${S.length}</span></div>
+  <div class="proses"><div style="width:${p}%"></div></div>${bicara(q.ucap,q.pose,false,sesi.i%2?'sigma':'teguh')}<h2>${q.t}</h2>${pilihan(q.id,q.o)}
+  ${q.cara?`<details class="bantu"><summary>Cara cek rasa raba</summary><ol><li>Minta bantuan orang yang Anda percaya.</li><li>Tutup mata, lalu minta ia menyentuh kulit sehat dengan ujung kapas.</li><li>Ulangi pada bercak, lalu tunjuk titik yang tersentuh.</li><li>Bandingkan rasanya. Jangan memakai jarum atau benda tajam.</li></ol></details>`:''}${kaki(true)}</form></section>`}
+ return halHasil();
+}
+function halHasil(){
+ const r=nilaiSkrining({...sesi.j,usia:hitungUsia(sesi.j.lahir)}),h=HASIL[r.hasil];
+ const nama={hasil:'Hasil',langkah:'Langkah',obat:'Pengobatan',ringkas:'Ringkasan'};
+ const tab=`<div class="tab" role="tablist">${Object.keys(nama).map(k=>`<button type="button" role="tab" data-tab="${k}" aria-selected="${sesi.t===k}">${nama[k]}</button>`).join('')}</div>`;
+ let isi='';
+ if(sesi.t==='hasil'){const kw={tinggi:'Tinggi',sedang:'Sedang',biasa:'Perlu perhatian',rendah:'Rendah'}[h.kls];
+  isi=`${bicara(h.ucap,r.hasil==='aman'?'jempol':'semangat',true)}${infoSimpan()}<span class="status ${h.kls}">${h.s}</span><h2>${h.j}</h2><p>${h.p}</p>
+  <div class="kartu bidang"><div><b>Tingkat kewaspadaan: ${kw}</b><div class="meter ${h.kls}-m" style="margin-top:6px">${[1,2,3,4].map(i=>`<b class="${i<=h.m?'on':''}"></b>`).join('')}</div><p class="kecil lembut" style="margin-top:6px">Ini menunjukkan seberapa cepat Anda perlu diperiksa, bukan parahnya penyakit. Keparahan hanya bisa dinilai petugas.</p></div>
+  <div><b>Kapan harus periksa?</b><p>${h.kap}</p></div></div>
+  ${r.alasan.length?`<div><h3>Yang Anda sampaikan</h3><ul>${r.alasan.map(x=>`<li>${x}</li>`).join('')}</ul></div>`:''}
+  <button type="button" class="tombol t-utama" data-tab="langkah">Lihat langkah saya</button>`}
+ if(sesi.t==='langkah')isi=`<h2>Pilih langkah Anda</h2><div class="bidang">${h.o.map((k,i)=>`<details class="opsi" name="opsi"${i===0?' open':''}><summary>${OPSI[k][0]}${i===0?'<span class="tagar">Disarankan</span>':''}</summary><p>${OPSI[k][1]}</p></details>`).join('')}</div>
+  ${r.catatan.length?`<ul>${r.catatan.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}
+  <h3>Alur di puskesmas</h3><ol class="alur"><li><span><b>Pendaftaran.</b> Tunjukkan ringkasan bila Anda nyaman.</span></li><li><span><b>Pemeriksaan.</b> Petugas memeriksa bercak, rasa raba, dan saraf.</span></li><li><span><b>Hasil.</b> Bukan kusta, masih ragu, atau kusta. Bila ragu, petugas bisa mengambil kerokan kulit, memeriksa ulang dalam 3–6 bulan, atau merujuk.</span></li><li><span><b>Bila kusta.</b> Anda mendapat obat gratis, dan keluarga dekat dapat diperiksa.</span></li></ol>`;
+ if(sesi.t==='obat')isi=`${bicara('Kusta bisa sembuh. Obatnya gratis di puskesmas. Yuk, jangan takut.','semangat',true,'sigma')}<h2>Gambaran pengobatan</h2><p>Ini berlaku bila petugas memastikan Anda terkena kusta. Jangan minum obat sendiri.</p>
+  <div class="kartu bidang"><div><b>Tipe PB</b>: bercak sedikit, biasanya 6–9 bulan.</div><div><b>Tipe MB</b>: bercak banyak, biasanya 12–18 bulan.</div></div>
+  <div class="tabel-obat bidang">${OBAT.map(([a,b,c])=>`<div class="kartu"><h3>${a}</h3><p>${b}</p><p class="kecil lembut"><b>Yang mungkin dirasakan:</b> ${c}</p></div>`).join('')}</div>
+  <div class="kartu" style="background:var(--merah-l);border-color:#F2B8AE"><h3>Segera ke puskesmas bila</h3><ul style="margin:6px 0 0;padding-left:20px"><li>Muncul ruam atau demam setelah minum obat.</li><li>Bercak mendadak merah, bengkak, atau muncul benjolan nyeri.</li><li>Saraf terasa nyeri, atau tangan, kaki, dan mata mendadak lemah.</li></ul></div>
+  <p>Jangan berhenti minum obat tanpa bertanya kepada petugas.</p>`;
+ if(sesi.t==='ringkas'){const j=sesi.j,u=hitungUsia(j.lahir);const teks=`RINGKASAN CEKBERCAK (skrining awal, bukan diagnosis)
+Nama: ${j.nama||'-'}
+NIK: ${j.nik||'-'}
+Jenis kelamin: ${j.jk||'-'}
+Tanggal lahir: ${j.lahir||'-'}${u!==null?` (${u} tahun)`:''}
+Telepon: ${j.telp||'-'}
+Pekerjaan: ${j.kerja||'-'}
+BB/TB: ${j.bb||'-'} kg / ${j.tb||'-'} cm
+Alamat: ${j.alamat||'-'}, ${j.kel||'-'}, ${j.kec||'-'}, ${j.kab||'-'}
+
+Status skrining: ${h.s}
+${r.alasan.map(x=>'- '+x).join('\n')||'- Tidak ada tanda dari jawaban'}
+Riwayat kontak: ${j.r_kontak||'-'}
+Pernah berobat kusta: ${j.r_pernah||'-'}`;sesi.salin=teks;
+  isi=`<h2>Ringkasan untuk petugas</h2><p class="lembut">Ringkasan ini berisi data pribadi. Tunjukkan hanya kepada petugas kesehatan.</p><pre class="ringkas" id="ringkas">${esc(teks)}</pre>
+  <div class="deret"><button type="button" class="tombol t-utama" data-aksi="salin">Salin ringkasan</button><button type="button" class="tombol t-kedua" data-aksi="ulang">Hapus dan mulai ulang</button></div><p class="kecil lembut" id="info" role="status"></p><a href="#saran">Beri saran untuk CekBercak</a>`}
+ return `<section class="hal">${tab}<div class="bidang">${isi}</div></section>`;
+}
+function validasi(fd){
+ const t=sesi.tahap,g=[];
+ if(t==='setuju'&&(!sesi.j.peran||!sesi.j.setuju))g.push('Pilih untuk siapa cek ini, lalu centang persetujuan.');
+ if(t==='diri'){if(!sesi.j.nama?.trim())g.push('Isi nama lengkap.');if(sesi.j.nik&&!/^\d{16}$/.test(sesi.j.nik))g.push('NIK harus 16 angka, atau kosongkan.');if(!sesi.j.jk)g.push('Pilih jenis kelamin.');if(hitungUsia(sesi.j.lahir)===null)g.push('Isi tanggal lahir yang benar.');if(sesi.j.telp&&!/^[0-9+ -]{8,16}$/.test(sesi.j.telp))g.push('Periksa kembali nomor telepon.');}
+ if(t==='tubuh'){if(sesi.j.bb&&!(+sesi.j.bb>0&&+sesi.j.bb<=300))g.push('Periksa kembali berat badan.');if(sesi.j.tb&&!(+sesi.j.tb>=30&&+sesi.j.tb<=250))g.push('Periksa kembali tinggi badan.');}
+ if(t==='alamat'&&!(sesi.j.kab?.trim()&&sesi.j.kec?.trim()&&sesi.j.kel?.trim()))g.push('Isi kabupaten, kecamatan, dan kelurahan atau desa.');
+ if(t==='soal'){const q=soalAktif()[sesi.i];if(!sesi.j[q.id])g.push('Pilih salah satu jawaban.');}
+ return g;
+}
+function maju(){const u=['setuju','diri','tubuh','alamat'],k=u.indexOf(sesi.tahap);
+ if(k>=0&&k<3)sesi.tahap=u[k+1];else if(k===3){sesi.tahap='soal';sesi.i=0}
+ else if(sesi.tahap==='soal'){if(sesi.i<soalAktif().length-1)sesi.i++;else{sesi.tahap='hasil';sesi.t='hasil';simpanHasil()}}
+ gambar();scrollTo(0,0)}
+function mundur(){const u=['setuju','diri','tubuh','alamat'],k=u.indexOf(sesi.tahap);
+ if(sesi.tahap==='soal'){if(sesi.i>0)sesi.i--;else sesi.tahap='alamat'}else if(k>0)sesi.tahap=u[k-1];gambar();scrollTo(0,0)}
+
+/* ---------- pahami kusta ---------- */
+const halPahami=()=>`<section class="hal"><h1>Pahami kusta</h1>${bicara('Mau menonton atau membaca? Pilih yang paling nyaman.')}
+ <div class="pintu"><a href="#video"><svg viewBox="0 0 90 90" aria-hidden="true"><circle cx="45" cy="45" r="42" fill="#FFC928"/><path d="M36 28l28 17-28 17z" fill="#3B2F14"/></svg><h3>Tonton video</h3><span class="lembut">Kurang dari 2 menit</span></a>
+ <a href="#baca"><svg viewBox="0 0 90 90" aria-hidden="true"><circle cx="45" cy="45" r="42" fill="#FFF3B8"/><path d="M22 28q12-5 23 2v36q-11-7-23-2zM68 28q-12-5-23 2v36q11-7 23-2z" fill="#fff" stroke="#3B2F14" stroke-width="3"/></svg><h3>Baca penjelasan</h3><span class="lembut">${BAB.length} bagian singkat</span></a></div></section>`;
+const halVideo=()=>`<section class="hal"><h1>Kenali kusta</h1><video controls playsinline preload="metadata" poster="assets/kenali-kusta.jpg" src="assets/kenali-kusta.mp4" aria-label="Video edukasi kusta bersuara"></video>
+ <details class="bantu"><summary>Baca isi video</summary><p>${NARASI}</p></details><div class="deret"><a class="tombol t-utama" href="#cek">Mulai cek</a><a class="tombol t-kedua" href="#baca">Baca selengkapnya</a></div></section>`;
+const halBaca=()=>`<section class="hal"><h1>Baca penjelasan</h1><div class="daftar-bab">${BAB.map((b,i)=>`<a href="#bab-${b.id}"><span>${i+1}</span>${b.j}</a>`).join('')}<a href="#bab-mitos"><span>${BAB.length+1}</span>Mitos atau fakta?</a></div></section>`;
+function halBab(id){
+ if(id==='mitos')return `<section class="hal"><h1>Mitos atau fakta?</h1>${bicara('Ketuk tiap kartu untuk melihat jawabannya.','jempol')}<div class="mitos">${MITOS.map((m,i)=>`<button type="button" class="balik" aria-pressed="false" data-m="${i}"><div class="sisi">${m[0]}</div></button>`).join('')}</div><div class="bab-nav"><a class="tombol t-kedua" href="#baca">Daftar bagian</a><a class="tombol t-utama" href="#cek">Mulai cek</a></div></section>`;
+ const i=BAB.findIndex(b=>b.id===id),b=BAB[i];if(!b)return halBaca();const n=BAB[i+1];
+ return `<section class="hal"><span class="status biasa">Bagian ${i+1} dari ${BAB.length+1}</span><h1>${b.j}</h1>${bicara(b.ucap,b.pose)}
+ <div class="kart-klik">${b.kart.map((k,x)=>`<div><button type="button" class="buka" aria-expanded="false" data-k="${x}">${k.t}</button><div class="isi-buka" hidden>${k.il?ILUS[k.il]:''}<p>${k.p}</p>${k.foto?`<div data-foto="${k.foto}"><button type="button" class="foto-t">Klik untuk melihat gambar asli gejala</button></div>`:''}</div></div>`).join('')}</div>
+ ${b.obat?`<div class="bidang">${OBAT.map(([a,c,d])=>`<div class="kartu"><h3>${a}</h3><p>${c}</p><p class="kecil lembut"><b>Yang mungkin dirasakan:</b> ${d}</p></div>`).join('')}</div>`:''}
+ <div class="bab-nav"><a class="tombol t-kedua" href="#baca">Daftar bagian</a><a class="tombol t-utama" href="#bab-${n?n.id:'mitos'}">Lanjut</a></div></section>`;
+}
+function tampilFoto(w,key){const p=FOTO[key];w.innerHTML=`<figure><img src="${f(p.n)}" alt="${esc(p.k)}"><figcaption>${p.k} ${p.c}. <a href="${hal(p.n)}" target="_blank" rel="noopener">Sumber</a></figcaption></figure>`;
+ w.querySelector('img').addEventListener('error',e=>{e.target.replaceWith(Object.assign(document.createElement('p'),{textContent:'Foto belum bisa dimuat di sini. Buka tautan sumber di bawah.'}))})}
+
+/* ---------- penularan ---------- */
+function halPenularan(){const y=new Date().getFullYear();return `<section class="hal"><h1>Dari mana kusta menular?</h1>${bicara('Tujuannya bukan mencari siapa yang salah, melainkan siapa yang perlu ikut diperiksa.')}
+ <div class="kart-klik">
+ <div><button type="button" class="buka" aria-expanded="false">Bagaimana cara menularnya?</button><div class="isi-buka" hidden><p>Kusta diduga menular lewat percikan dari hidung dan mulut orang yang belum berobat, saat kontak dekat dan lama.</p></div></div>
+ <div><button type="button" class="buka" aria-expanded="false">Siapa yang lebih berisiko?</button><div class="isi-buka" hidden><p>Orang serumah, tetangga dekat, dan teman sekolah atau kerja yang bergaul minimal 20 jam per minggu dengan orang yang belum berobat.</p></div></div>
+ <div><button type="button" class="buka" aria-expanded="false">Yang tidak menularkan</button><div class="isi-buka" hidden><p>Bersalaman, berpelukan, makan bersama, dan duduk berdekatan tidak menularkan kusta. Orang yang sudah berobat juga tidak lagi menjadi sumber penularan.</p></div></div>
+ </div>
+ <div class="kartu bidang"><h2>Kira-kira kapan tertular?</h2><p>Gejala bisa muncul 3 bulan sampai 10 tahun setelah tertular. Karena itu, sumbernya sering tidak diketahui.</p>
+ <div class="isian"><label for="thn">Tahun tanda pertama muncul</label><input type="number" id="thn" min="1950" max="${y}" value="${y}" inputmode="numeric"></div>
+ <div class="garis-waktu"><div style="width:100%"></div></div><p id="rentang"><b>Kemungkinan tertular: sekitar ${y-10} sampai ${y}.</b></p>
+ <p class="lembut">Dalam rentang itu, coba ingat apakah ada orang serumah atau dekat yang pernah berobat kusta, punya bercak mati rasa, atau jari yang berubah bentuk.</p></div>
+ <div class="kartu bidang"><h3>Bila ada orang dekat dengan kusta</h3><p>Minta pemeriksaan kontak di puskesmas setahun sekali selama 5 tahun. Tanyakan juga obat pencegahan dosis tunggal, yang hanya diberikan petugas.</p><div class="deret"><a class="tombol t-utama" href="#cek">Mulai cek</a></div></div></section>`}
+
+/* ---------- saran ---------- */
+function halSaran(){return `<section class="hal"><h1>Saran dan penilaian</h1>${bicara('Masukan Anda membantu CekBercak menjadi lebih baik. Tidak perlu menulis nama.','jempol')}
+ <form id="fs" class="bidang"><div class="bidang"><span class="lab">Seberapa berguna website ini?</span><div class="bintang" role="group" aria-label="Pilih nilai 1 sampai 5">${[1,2,3,4,5].map(n=>`<button type="button" data-b="${n}" aria-label="${n} bintang" class="${n<=saran.b?'on':''}">★</button>`).join('')}</div></div>
+ <div class="bidang"><span class="lab">Apakah bahasanya mudah dipahami?</span><div class="dua">${[['ya','Ya, mudah'],['tidak','Masih sulit']].map(([v,l])=>`<div class="pil"><label><input type="radio" name="mudah" id="mudah-${v}" value="${v}"${saran.mudah===v?' checked':''}><span>${l}</span></label></div>`).join('')}</div></div>
+ <div class="isian"><label for="stk">Saran Anda</label><textarea id="stk" rows="4">${esc(saran.teks)}</textarea></div>
+ <p class="galat" id="galat" role="alert" hidden></p><div class="deret"><button class="tombol t-utama" type="submit">Kirim saran</button></div><p id="info" role="status"></p></form></section>`}
+async function kirimSaran(){const g=document.getElementById('galat'),inf=document.getElementById('info');saran.teks=document.getElementById('stk').value;
+ if(!saran.b){g.textContent='Pilih nilai bintang dulu.';g.hidden=false;return}g.hidden=true;
+ if(!ATUR.SKRIP_URL){inf.textContent='Terima kasih. Penyimpanan saran belum dipasang, jadi saran Anda belum terkirim.';return}
+ inf.textContent='Mengirim…';const r=await kirim({aksi:'saran',data:{bintang:saran.b,mudah:saran.mudah,saran:saran.teks}});
+ inf.textContent=r.ok?'Terima kasih. Saran Anda sudah terkirim.':'Saran belum terkirim. Periksa internet Anda, lalu coba lagi.'}
+const halSumber=()=>`<section class="hal"><h1>Sumber</h1><p>Isi CekBercak disusun dari dokumen berikut. Foto medis berasal dari Wikimedia Commons, dengan pemilik dan lisensi tercantum di setiap foto.</p><ul>${SUMBER.map(([t,u])=>`<li><a href="${u}" target="_blank" rel="noopener">${t}</a></li>`).join('')}</ul><p class="lembut">Video dan ilustrasi dibuat khusus untuk CekBercak. Kode QR dibuat dengan pustaka QR Code karya Kazuhiko Arase (lisensi MIT).</p></section>`;
+
+/* ---------- rute ---------- */
+const menuAktif={beranda:'beranda',cek:'beranda',pahami:'pahami',video:'pahami',baca:'pahami',penularan:'penularan',saran:'saran'};
+function gambar(){
+ const r=(location.hash.slice(1)||'beranda');
+ const v=r==='barcode'?halQR():r==='petugas'?halPetugas():r==='beranda'?beranda():r==='cek'?halCek():r==='pahami'?halPahami():r==='video'?halVideo():r==='baca'?halBaca():r.startsWith('bab-')?halBab(r.slice(4)):r==='penularan'?halPenularan():r==='saran'?halSaran():r==='sumber'?halSumber():beranda();
+ utama.innerHTML=v;if(r==='barcode')pasangQR();
+ const m=menuAktif[r]||(r.startsWith('bab-')?'pahami':'');
+ document.querySelectorAll('[data-m-nav]').forEach(a=>{if(a.dataset.mNav===m)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+}
+utama.addEventListener('input',e=>{const t=e.target;
+ if(t.id==='thn'){const y=+t.value,el=document.getElementById('rentang');if(y>=1950&&y<=new Date().getFullYear())el.innerHTML=`<b>Kemungkinan tertular: sekitar ${y-10} sampai ${y}.</b>`;return}
+ if(t.closest('#f')){if(t.type==='checkbox')sesi.j[t.name]=t.checked;else if(t.type==='radio'){if(t.checked)sesi.j[t.name]=t.value}else sesi.j[t.name]=t.value.trim?t.value:t.value;
+  if(t.id==='lahir'){const u=hitungUsia(t.value),s=t.parentElement.querySelector('small')||t.parentElement.appendChild(document.createElement('small'));s.textContent=u!==null?`Usia: ${u} tahun`:''}
+  if(t.type==='radio'&&sesi.tahap==='soal')setTimeout(()=>{if(sesi.j[t.name]===t.value)maju()},260)}
+ if(t.name==='mudah')saran.mudah=t.value;
+});
+utama.addEventListener('submit',e=>{e.preventDefault();
+ if(e.target.id==='fs'){kirimSaran();return}
+ const g=validasi(),el=document.getElementById('galat');if(g.length){el.textContent=g[0];el.hidden=false;return}maju()});
+utama.addEventListener('click',e=>{const t=e.target,b=t.closest('button');if(!b)return;
+ if(b.dataset.aksi==='mundur')mundur();
+ if(b.dataset.aksi==='ulang'){sesi.tahap='setuju';sesi.i=0;sesi.j={};sesi.t='hasil';sesi.simpan='';gambar();scrollTo(0,0)}
+ if(b.dataset.aksi==='salin'){const i=document.getElementById('info'),gagal=()=>{const s=getSelection(),r=document.createRange();r.selectNodeContents(document.getElementById('ringkas'));s.removeAllRanges();s.addRange(r);i.textContent='Teks sudah dipilih. Salin secara manual.'};
+  if(navigator.clipboard)navigator.clipboard.writeText(sesi.salin).then(()=>{i.textContent='Ringkasan tersalin.'}).catch(gagal);else gagal()}
+ if(b.dataset.tab){sesi.t=b.dataset.tab;gambar();scrollTo(0,0)}
+ if(b.classList.contains('buka')){const o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',!o);b.nextElementSibling.hidden=o}
+ if(b.classList.contains('foto-t'))tampilFoto(b.parentElement,b.parentElement.dataset.foto);
+ if(b.classList.contains('balik')){const on=b.getAttribute('aria-pressed')==='true',m=MITOS[+b.dataset.m];b.setAttribute('aria-pressed',!on);b.querySelector('.sisi').textContent=m[on?0:1]}
+ if(b.dataset.b){saran.b=+b.dataset.b;saran.teks=document.getElementById('stk').value;document.querySelectorAll('.bintang button').forEach(x=>x.classList.toggle('on',+x.dataset.b<=saran.b))}
+});
+addEventListener('hashchange',()=>{gambar();scrollTo(0,0)});
+gambar();
+</script>
+</body>
+</html>
